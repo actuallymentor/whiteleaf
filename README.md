@@ -5,3 +5,19 @@
 <img height="50px" alt="react" src="http://i.imgur.com/D19TgT8.png" /><img height="50px" alt="webpack" src="http://i.imgur.com/ZtANAeL.png" /><img height="50px" alt="browsersync" src="http://i.imgur.com/L5peje9.png" /><img height="50px" alt="mocha" src="http://i.imgur.com/yo9d9Qe.png" />
 
 Based on a fork of this [react frontend boilerplate](https://github.com/actuallymentor/react-frontend-boilerplate).
+
+Todo:
+
+- firebase
+    + register api
+    + login api
+    + crud contacts api
+    + crud meeting api
+    + import google contacts
+- Interface
+    + register
+    + login
+    + register
+    + search contacts
+    + crud contacts
+    + crud contact meeting

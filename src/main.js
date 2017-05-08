@@ -2,6 +2,9 @@ console.log('Main js loaded')
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+// Grab firebase
+import fb from './modules/fb-main'
+
 // Visual elements
 import { Panel, Header } from './state/head'
 import { Main, Section } from './state/body'
