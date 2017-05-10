@@ -9,12 +9,15 @@ export const login = ( app, email, password ) => app.auth().signInWithEmailAndPa
 
 // Grabbing the currently logged in user
 export const get = app => {
-	return new Promise( resolve => {
+	return new Promise( ( resolve, reject ) => {
 		app.auth( ).onAuthStateChanged( user => {
-			if ( user ) resolve( user )
+			user ? resolve( user ) : reject( user )
 		} )
 	} )
 }
+
+// Log the user out
+export const logout = app => app.auth( ).signOut( )
 
 // Delete the current user
 export const destroy = app => {

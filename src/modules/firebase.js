@@ -30,6 +30,8 @@ export default class App {
 
 	// Login
 	login( email, password ) 	{ return user.login( this.fb, email, password ) }
+	// Logout
+	logout( ) 					{ return user.logout( this.fb ) }
 	// Register
 	register( email, password ) { return user.register( this.fb, email, password ) }
 	// Get current user
