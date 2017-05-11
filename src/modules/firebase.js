@@ -6,17 +6,19 @@
 import firebase from 'firebase/app'
 import auth from 'firebase/auth'
 import db from 'firebase/database'
+import config from './helpers/firebase-config'
 
 // ///////////////////////////////
 // Import functions
 // ///////////////////////////////
 import * as user from './functions/firebase-userman'
+import * as contacts from './functions/firebase-contactman'
 
 
 // ///////////////////////////////
 // App wrapper
 // ///////////////////////////////
-export default class App {
+class App {
 
 	constructor( config ) {
 		// Init firebase & link auth and db
@@ -29,13 +31,20 @@ export default class App {
 	// USER MANAGEMENT
 
 	// Login
-	login( email, password ) 	{ return user.login( this.fb, email, password ) }
+	login( email, password ) 	{ return user.login( this, email, password ) }
 	// Logout
-	logout( ) 					{ return user.logout( this.fb ) }
+	logout( ) 					{ return user.logout( this ) }
 	// Register
-	register( email, password ) { return user.register( this.fb, email, password ) }
+	register( email, password ) { return user.register( this, email, password ) }
 	// Get current user
-	currentUser( ) 				{ return user.get( this.fb ) }
+	currentUser( ) 				{ return user.get( this ) }
 	// Delete the current user
-	deleteUser( ) 				{ return user.destroy( this.fb ) }
+	deleteUser( ) 				{ return user.destroy( this ) }
+
+	// CONTACT MANAGEMENT
+
+	// Write new contact
+	makeContact( name, bio, channels ) { return contacts.create ( this, name, bio, channels ) }
 }
+
+export default new App( config )

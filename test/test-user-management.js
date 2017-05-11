@@ -8,19 +8,12 @@ global.XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest
 import { expect } from 'chai'
 
 // Import app and config
-import App from '../src/modules/firebase'
-import config from '../src/modules/helpers/firebase-config'
+import app from '../src/modules/firebase'
 
 const email = `${ Math.random().toString(36).substr(2, 25) }@test.co`
 const password = 'password'
 
-// Generate app
-const app = new App( config )
-
 describe( 'User management', f => {
-
-	it( 'Generated receives the config', function() { return expect( config.apiKey ).to.exist } )
-
 	// CR_D User
 	it( 'Can register a user', function() { return app.register( email, password ) } )
 	it( 'Can log in a user', function() { return app.login( email, password ) } )
