@@ -20,7 +20,6 @@ const bsconfig = {
     }
   },
   https: true,
-  // proxy: 'https://web.dev:3000',
   notify: {
     styles:  [
     "display: none",
@@ -44,8 +43,6 @@ const bsyncplugconfig = {
   callback: f => { thebs = bs.get( servername ) }
 }
 
-// Get environment variables
-require('dotenv').config( `${__dirname}/.env` )
 // Remap process env
 const stringify_env = f => {
   let environment = {}
@@ -55,11 +52,12 @@ const stringify_env = f => {
 
 const plugins = process.env.NODE_ENV == 'production' ?
   [ new webpack.optimize.UglifyJsPlugin( { compress: { warnings: false }, sourceMap: true } ),
-    new webpack.DefinePlugin( { 'process.env': { NODE_ENV: JSON.stringify( 'production' ) } } ),
-    new webpack.DefinePlugin( stringify_env( ) ) ]
+    new webpack.DefinePlugin( { 'process.env': { NODE_ENV: JSON.stringify( 'production' ) } } )
+  ]
   :
   [ new BrowserSyncPlugin( bsconfig, bsyncplugconfig ),
-    new webpack.DefinePlugin( stringify_env( ) ) ]
+    new webpack.DefinePlugin( { 'process.env': { NODE_ENV: JSON.stringify( 'development' ) } } )
+  ]
 
 const maps = env => {
   if( env == 'production' ) {

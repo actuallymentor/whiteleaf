@@ -7,6 +7,8 @@ import { Panel, Header } from './state/head'
 import { Main, Section } from './state/body'
 import Footer from './stateless/footer-views'
 
+import app from './modules/firebase'
+
 // Css
 import './styles/styles.scss'
 

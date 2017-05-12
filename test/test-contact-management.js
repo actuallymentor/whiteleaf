@@ -1,9 +1,6 @@
 // Get polyfill so we can use full ES6 in the tests
 import 'babel-polyfill'
 
-// needed to fix "Error: The XMLHttpRequest compatibility library was not found."
-global.XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest
-
 // Get the expect functionality
 import { expect } from 'chai'
 
@@ -22,8 +19,12 @@ describe( 'Contact management', f => {
 			return app.currentUser()
 		} ).then( user => {
 			// User is now logged in
-			expect( user.email ).to.equal( email )
-			return app.makeContact( 'Potato', 'He is a total potato', [ { email: 'mr@potato.com' } ] )
+			// expect( user.email ).to.equal( email )
+			// return app.makeContact( 'Potato', 'He is a total potato', [ { email: 'mr@potato.com' } ] )
+			return app.db.ref( `users/${user.uid}` ).set( {color: 'purple'} )
+
+		} ).then( f => {
+			console.log( "This never triggers" )
 		} )
 	} )
 

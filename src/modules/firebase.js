@@ -3,9 +3,7 @@
 // ///////////////////////////////
 
 // Import firebase elements we need
-import firebase from 'firebase/app'
-import auth from 'firebase/auth'
-import db from 'firebase/database'
+import firebase from 'firebase'
 import config from './helpers/firebase-config'
 
 // ///////////////////////////////
@@ -24,8 +22,8 @@ class App {
 		// Init firebase & link auth and db
 		this.fb = firebase
 		this.fb.initializeApp( config )
-		this.fb.auth = auth
-		this.fb.db = db
+		this.auth = this.fb.auth()
+		this.db = this.fb.database()
 	}
 
 	// USER MANAGEMENT
@@ -45,6 +43,7 @@ class App {
 
 	// Write new contact
 	makeContact( name, bio, channels ) { return contacts.create ( this, name, bio, channels ) }
+
 }
 
 export default new App( config )

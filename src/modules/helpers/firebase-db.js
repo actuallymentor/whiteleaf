@@ -6,15 +6,17 @@
 // Use the .set() function to overwrite a node
 export const overwrite = ( app, path, data ) => {
 	return app.currentUser().then( user => {
-		return app.fb.db().ref( `users/${ user.uid }` ).child( path ).set( data )
+		return app.db.ref( `users/${ user.uid }` ).child( path ).set( data )
 	} )
 }
 
 export const append = ( app, path, data ) => {
-	return app.currentUser().then( user => {
-		console.log( user )
-		let childid = app.fb.db().ref( `users/${ user.uid }` ).child( path ).push().key
-		return app.fb.db().ref( `users/${ user.uid }/` ).child( path ).child( childid ).set( data )
+	return new Promise( ( resolve, reject ) => {
+		app.currentUser().then( user => {
+			app.db.ref( `users/${ user.uid }/${ path }` ).push( data, err => {
+				err ? reject( ) : resolve( )
+			} )
+		} )
 	} )
 }
 

@@ -11,7 +11,7 @@ const verify = data => {
 
 
 // Add a contact
-export const create = ( app, name, bio, channels = [] ) => {
+export const create = ( app, name, bio, channels ) => {
 	// Write data to user's contacts child
 	return db.append( app, 'contacts', { name: name, bio: bio, channels: channels } )
 }

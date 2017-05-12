@@ -3,6 +3,8 @@ import 'babel-polyfill'
 
 // needed to fix "Error: The XMLHttpRequest compatibility library was not found."
 global.XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest
+// Import environment
+require('dotenv').config( `${__dirname}/../.env` )
 
 // Get the expect functionality
 import { expect } from 'chai'

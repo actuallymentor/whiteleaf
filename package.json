@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start": "NODE_ENV=development webpack --progress -d --watch",
-    "test": "mocha -S --compilers js:babel-core/register",
+    "test": "mocha --timeout 5000 --compilers js:babel-core/register",
     "build": "NODE_ENV=production webpack --progress -p"
   },
   "repository": "actuallymentor/react-frontend-boilerplate",
@@ -32,13 +32,12 @@
   "homepage": "https://github.com/actuallymentor/react-frontend-boilerplate#readme",
   "dependencies": {
     "babel-polyfill": "^6.23.0",
+    "chai": "^3.5.0",
     "colors": "^1.1.2",
     "dotenv": "^4.0.0",
     "firebase": "^3.9.0",
     "ip": "^1.1.5",
-    "ncp": "^2.0.0"
-  },
-  "devDependencies": {
+    "ncp": "^2.0.0",
     "autoprefixer": "^6.7.7",
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
@@ -46,7 +45,6 @@
     "babel-preset-react": "^6.24.1",
     "browser-sync": "^2.18.8",
     "browser-sync-webpack-plugin": "^1.1.4",
-    "chai": "^3.5.0",
     "css-loader": "^0.28.1",
     "mocha": "^3.3.0",
     "node-sass": "^4.5.2",
@@ -56,7 +54,6 @@
     "react-dom": "^15.5.4",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.17.0",
-    "webpack": "^2.5.0",
-    "xmlhttprequest": "^1.8.0"
+    "webpack": "^2.5.0"
   }
 }
