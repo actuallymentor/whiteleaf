@@ -19,12 +19,9 @@ describe( 'Contact management', f => {
 			return app.currentUser()
 		} ).then( user => {
 			// User is now logged in
-			// expect( user.email ).to.equal( email )
-			// return app.makeContact( 'Potato', 'He is a total potato', [ { email: 'mr@potato.com' } ] )
-			return app.db.ref( `users/${user.uid}` ).set( {color: 'purple'} )
+			expect( user.email ).to.equal( email )
+			return app.makeContact( 'Potato', 'He is a total potato', [ { email: 'mr@potato.com' } ] )
 
-		} ).then( f => {
-			console.log( "This never triggers" )
 		} )
 	} )
 
