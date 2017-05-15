@@ -32,7 +32,8 @@ export const update = ( app, path, data ) => {
 }
 
 // Use .remove() to delete a reference
-
-export const destroy = ( app, ref ) => {
-	return app.fb.db().ref( ref ).remove()
+export const destroy = ( app, path ) => {
+	return app.currentUser().then( user => {
+		return app.db.ref( `users/${ user.uid }/${ path }` ).remove()
+	} )
 }

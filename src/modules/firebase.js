@@ -45,6 +45,7 @@ class App {
 	addContact( name, bio, channels )  { return contacts.create ( this, name, bio, channels ) }
 	getContacts( )					   { return contacts.get( this ) }
 	updateContact( id, data )		   { return contacts.update( this, id, data ) }
+	destroyContact( id )			   { return contacts.destroy( this, id ) }
 
 }
 

@@ -29,6 +29,6 @@ export const update = ( app, contactid, newdata ) => {
 }
 
 // Remove a contact
-export const destroy = ( app, data ) => {
-	
+export const destroy = ( app, contactid ) => {
+	return db.destroy( app, `contacts/${contactid}` )
 }

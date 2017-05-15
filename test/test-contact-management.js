@@ -64,4 +64,23 @@ describe( 'Contact management', f => {
 		} )
 	} )
 
+	it( 'Can delete existing contacts', function() {
+		return app.currentUser().then( user => {
+			// User is still logged in
+			expect( user.email ).to.equal( email )
+			return app.getContacts()
+		} ).then( contacts => {
+			let keys = Object.keys( contacts.val() )
+			return keys[0]
+		} ).then( contactid => {
+			return app.destroyContact( contactid )
+		} ).then( f => {
+			return app.getContacts()
+		} ).then( contacts => {
+			expect( contacts.val( ) ).to.equal( null )
+		} )
+	} )
+
+
+
 } )
