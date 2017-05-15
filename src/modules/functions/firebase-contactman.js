@@ -17,13 +17,15 @@ export const create = ( app, name, bio, channels ) => {
 }
 
 // Read a speficic contact from db
-export const read = ( app, query ) => {
-	
+export const get = ( app ) => {
+	// Read a node
+	return db.read( app, `contacts` )
 }
 
 // Update an existing contact
-export const update = ( app, data ) => {
-	
+export const update = ( app, contactid, newdata ) => {
+	// Update a contact
+	return db.update( app, `contacts/${contactid}`, newdata )
 }
 
 // Remove a contact

@@ -10,6 +10,7 @@ export const overwrite = ( app, path, data ) => {
 	} )
 }
 
+// Append data to node using .push()
 export const append = ( app, path, data ) => {
 	return new Promise( ( resolve, reject ) => {
 		app.currentUser().then( user => {
@@ -20,9 +21,22 @@ export const append = ( app, path, data ) => {
 	} )
 }
 
-// Use the .update() function to update a node
-export const update = ( app, data ) => {
+// Read a db snapshot and return it
+export const read = ( app, path ) => {
+	return app.currentUser().then( user => {
+		return app.db.ref( `users/${user.uid}/${path}` ).once( 'value' )
+	} )
+}
 
+// Use the .update() function to update a node
+export const update = ( app, path, data ) => {
+	return new Promise( ( resolve, reject ) => {
+		app.currentUser().then( user => {
+			app.db.ref( `users/${ user.uid }/${ path }` ).update( data, err => {
+				err ? reject( ) : resolve( )
+			} )
+		} )
+	} )
 }
 
 // Use .remove() to delete a reference

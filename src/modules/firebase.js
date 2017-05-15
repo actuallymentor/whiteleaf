@@ -42,7 +42,9 @@ class App {
 	// CONTACT MANAGEMENT
 
 	// Write new contact
-	makeContact( name, bio, channels ) { return contacts.create ( this, name, bio, channels ) }
+	addContact( name, bio, channels )  { return contacts.create ( this, name, bio, channels ) }
+	getContacts( )					   { return contacts.get( this ) }
+	updateContact( id, data )		   { return contacts.update( this, id, data ) }
 
 }
 
