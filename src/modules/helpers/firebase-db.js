@@ -12,12 +12,8 @@ export const overwrite = ( app, path, data ) => {
 
 // Append data to node using .push()
 export const append = ( app, path, data ) => {
-	return new Promise( ( resolve, reject ) => {
-		app.currentUser().then( user => {
-			app.db.ref( `users/${ user.uid }/${ path }` ).push( data, err => {
-				err ? reject( ) : resolve( )
-			} )
-		} )
+	return app.currentUser().then( user => {
+		return app.db.ref( `users/${ user.uid }/${ path }` ).push( data )
 	} )
 }
 
@@ -30,12 +26,8 @@ export const read = ( app, path ) => {
 
 // Use the .update() function to update a node
 export const update = ( app, path, data ) => {
-	return new Promise( ( resolve, reject ) => {
-		app.currentUser().then( user => {
-			app.db.ref( `users/${ user.uid }/${ path }` ).update( data, err => {
-				err ? reject( ) : resolve( )
-			} )
-		} )
+	return app.currentUser().then( user => {
+		return app.db.ref( `users/${ user.uid }/${ path }` ).update( data )
 	} )
 }
 
