@@ -23,6 +23,9 @@ const meeting = {
 	notes: `Good to see ${friend.name} again. We should meet up far more often.`
 }
 
+// Contact id of the newly created contact
+let friendid = ''
+
 describe( 'Meeting management', f => {
 
 	it( 'Can write a new meeting', function() {
@@ -35,13 +38,28 @@ describe( 'Meeting management', f => {
 		} )
 		.then( user => {
 			// User is now logged in
-			console.log( `User ${user.uid}` )
 			expect( user.email ).to.equal( email )
 			return app.addContact( friend.name, friend.bio, friend.channels )
 		} )
 		.then( contactref => contactref.key )
 		.then( contactid => {
+			// Set the friend id globally
+			friendid = contactid
 			return app.addMeeting( contactid, meeting.date, meeting.location, meeting.notes )
+		} )
+	} )
+
+	it( 'Can read currently existing meetings', function() {
+		return app.currentUser().then( user => {
+			// User is still logged in
+			expect( user.email ).to.equal( email )
+			return app.getMeetingsWith( friendid )
+		} ).then( meetings => {
+			expect( meetings.val() ).to.be.an( 'object' )
+			let keys = Object.keys( meetings.val() )
+			expect( meetings.child( keys[0] ).val().date ).to.equal( meeting.date )
+			expect( meetings.child( keys[0] ).val().location ).to.equal( meeting.location )
+			expect( meetings.child( keys[0] ).val().notes ).to.equal( meeting.notes )
 		} )
 	} )
 

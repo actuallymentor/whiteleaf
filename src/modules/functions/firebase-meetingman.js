@@ -14,10 +14,7 @@ export const create = ( app, contactid, date, location, meetingnotes ) => {
 // BELOW IS JUST COPY PASTE OF CONTACTS
 
 // Read a speficic contact from db
-export const get = ( app ) => {
-	// Read a node
-	return db.read( app, `contacts` )
-}
+export const get = ( app, contactid ) => db.read( app, `contacts/${contactid}/meetings` )
 
 // Update an existing contact
 export const update = ( app, contactid, newdata ) => {
