@@ -9,10 +9,9 @@ Based on a fork of this [react frontend boilerplate](https://github.com/actually
 Todo:
 
 - firebase
-    + register api
-    + login api
-    + crud contacts api
-    + crud meeting api
+    + ~~crud user api~~
+    + ~~crud contacts api~~
+    + ~~crud meeting api~~
     + import google contacts
 - Interface
     + register
