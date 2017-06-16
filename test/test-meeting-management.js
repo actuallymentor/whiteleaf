@@ -22,15 +22,18 @@ const meeting = {
 	location: 'Starbucks Paris',
 	notes: `Good to see ${friend.name} again. We should meet up far more often.`
 }
+const updatedmeeting = {
+	location: 'Starbucks Paris Central Station'
+}
 
 // Contact id of the newly created contact
 let friendid = ''
+let meetingid = ''
 
 describe( 'Meeting management', f => {
 
 	it( 'Can write a new meeting', function() {
-		return app.register( email, password )
-		.then( f => {
+		return app.register( email, password ).then( f => {
 			return app.login( email, password )
 		} )
 		.then( f => {
@@ -50,17 +53,49 @@ describe( 'Meeting management', f => {
 	} )
 
 	it( 'Can read currently existing meetings', function() {
-		return app.currentUser().then( user => {
+		return app.currentUser()
+		.then( user => {
 			// User is still logged in
 			expect( user.email ).to.equal( email )
 			return app.getMeetingsWith( friendid )
-		} ).then( meetings => {
+		} )
+		.then( meetings => {
 			expect( meetings.val() ).to.be.an( 'object' )
 			let keys = Object.keys( meetings.val() )
+			// Set the meeting id for later tests
+			meetingid = keys[0]
 			expect( meetings.child( keys[0] ).val().date ).to.equal( meeting.date )
 			expect( meetings.child( keys[0] ).val().location ).to.equal( meeting.location )
 			expect( meetings.child( keys[0] ).val().notes ).to.equal( meeting.notes )
 		} )
+	} )
+
+	it( 'Can update currently existing meetings', function() {
+		return app.currentUser()
+		.then( user => {
+			return app.updateMeeting( friendid, meetingid, updatedmeeting )
+		} ).then( f => {
+			return app.getMeetingsWith( friendid )
+		} ).then( meetings => {
+			let keys = Object.keys( meetings.val() )
+			expect( meetings.child( keys[0] ).val().location ).to.equal( updatedmeeting.location )
+		} )
+	} )
+
+	it( 'Can delete a meeting', function() {
+		return app.destroyMeeting( friendid, meetingid )
+		.then( f => {
+			return app.currentUser()
+		} )
+		.then( user => {
+			return app.getMeetingsWith( friendid )
+		} )
+		.then( meetings => {
+			expect( meetings.val() ).to.equal( null )
+			// We are done, delete user
+			return app.deleteUser( )
+		} )
+
 	} )
 
 } )

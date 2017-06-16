@@ -79,7 +79,7 @@ describe( 'Contact management', f => {
 		} ).then( contacts => {
 			expect( contacts.val( ) ).to.equal( null )
 			// We are done, delete user
-			app.deleteUser( )
+			return app.deleteUser( )
 		} )
 	} )
 

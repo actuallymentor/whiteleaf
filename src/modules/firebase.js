@@ -44,6 +44,8 @@ class App {
 	// MEETING MANAGEMENT
 	addMeeting( contactid, date, location, meetingnotes ) { return meetings.create( this, contactid, date, location, meetingnotes ) }
 	getMeetingsWith( contactid ) 						  { return meetings.get( this, contactid ) }
+	updateMeeting( contactid, meetingid, newdata ) 		  { return meetings.update( this, contactid, meetingid, newdata ) }
+	destroyMeeting( contactid, meetingid ) 				  { return meetings.destroy( this, contactid, meetingid ) }
 
 }
 

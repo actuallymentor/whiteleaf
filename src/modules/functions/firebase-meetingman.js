@@ -17,12 +17,12 @@ export const create = ( app, contactid, date, location, meetingnotes ) => {
 export const get = ( app, contactid ) => db.read( app, `contacts/${contactid}/meetings` )
 
 // Update an existing contact
-export const update = ( app, contactid, newdata ) => {
+export const update = ( app, contactid, meetingid, newdata ) => {
 	// Update a contact
-	return db.update( app, `contacts/${contactid}`, newdata )
+	return db.update( app, `contacts/${contactid}/meetings/${meetingid}`, newdata )
 }
 
 // Remove a contact
-export const destroy = ( app, contactid ) => {
-	return db.destroy( app, `contacts/${contactid}` )
+export const destroy = ( app, contactid, meetingid ) => {
+	return db.destroy( app, `contacts/${contactid}/meetings/${meetingid}` )
 }
