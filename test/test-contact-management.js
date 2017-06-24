@@ -83,6 +83,4 @@ describe( 'Contact management', f => {
 		} )
 	} )
 
-
-
 } )

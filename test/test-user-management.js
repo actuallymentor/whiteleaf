@@ -52,7 +52,7 @@ describe( 'User management', f => {
 			return Promise.reject( 'bad' )
 		} ).catch( f => {
 			// The login should be rejected
-			Promise.resolve( 'good' )
+			return Promise.resolve( 'good' )
 		} )
 	} )
 

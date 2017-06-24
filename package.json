@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start": "NODE_ENV=development webpack --progress -d --watch",
-    "test": "mocha --timeout 10000 --compilers js:babel-core/register",
+    "test": "for file in ./test/*.js \n do \n mocha --timeout 10000 --compilers js:babel-core/register $file \n done ",
     "build": "NODE_ENV=production webpack --progress -p"
   },
   "repository": "actuallymentor/react-frontend-boilerplate",
