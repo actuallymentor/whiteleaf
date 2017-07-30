@@ -1,5 +1,5 @@
 import React from 'react'
-import { PanelView, HeaderView, MenuView, AccountView } from '../stateless/head-views'
+import { PanelView, MenuView } from '../stateless/head-views'
 
 // The menu logic
 
@@ -41,27 +41,5 @@ export class Panel extends React.Component {
 				 </PanelView>
 			</div>
 		)
-	}
-}
-
-
-// The header logic
-export class Header extends React.Component {
-
-	constructor( props ) {
-		super( props )
-		console.log( this.state )
-	}
-
-	render(  ) {
-		return  (
-			<HeaderView
-				id 		 = { this.props.id }
-				title 	 = { this.props.title }
-				subtitle = { this.props.subtitle }
-				name 	 = { this.props.name }
-				logo 	 = { this.props.logo }
-		 	/>
-		 )
 	}
 }

@@ -7,7 +7,9 @@ export const SectionView = props =>  (
 	)
 
 export const MainView = props =>  (
-		<div className="container">
-			{ props.children }
-		</div>
+		<main>
+			<div className="container">
+				{ props.children }
+			</div>
+		</main>
 	)

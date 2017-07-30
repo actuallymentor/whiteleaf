@@ -3,9 +3,11 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 // Visual elements
-import { Panel, Header } from './state/head'
-import { Main, Section } from './state/body'
+import { Panel } from './state/head'
 import Footer from './stateless/footer-views'
+
+import { HeaderView } from './stateless/head-views'
+import { SectionView, MainView } from './stateless/body-views'
 
 // Firebase
 import app from './modules/firebase'
@@ -33,7 +35,7 @@ class App extends React.Component {
 				<div className = "flexify">
 					<header>
 						<Panel id= "menu" />
-						<Header
+						<HeaderView
 							id 		 = "header"
 							title 	 = "Home"
 							subtitle = "Welcome stranger"
@@ -41,9 +43,9 @@ class App extends React.Component {
 							logo	 = ""
 						/>
 					</header>
-					<Main>
-						<Section content = { <Lorem /> } />
-					</Main>
+					<MainView>
+						<SectionView content = { <Lorem /> } />
+					</MainView>
 					<Footer
 						owner = "Mentor Palokaj"
 					 />
