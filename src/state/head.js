@@ -47,14 +47,20 @@ export class Panel extends React.Component {
 
 // The header logic
 export class Header extends React.Component {
+
+	constructor( props ) {
+		super( props )
+		console.log( this.state )
+	}
+
 	render(  ) {
 		return  (
 			<HeaderView
 				id 		 = { this.props.id }
 				title 	 = { this.props.title }
 				subtitle = { this.props.subtitle }
-				name 	 = {this.props.name }
-				logo 	 = {this.props.logo }
+				name 	 = { this.props.name }
+				logo 	 = { this.props.logo }
 		 	/>
 		 )
 	}

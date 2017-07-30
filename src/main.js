@@ -7,7 +7,16 @@ import { Panel, Header } from './state/head'
 import { Main, Section } from './state/body'
 import Footer from './stateless/footer-views'
 
+// Firebase
 import app from './modules/firebase'
+
+// Redux
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import reducer from './redux/reducers'
+import actions from './redux/actions'
+
+let store = createStore( reducer )
 
 // Css
 import './styles/styles.scss'
@@ -20,24 +29,26 @@ class App extends React.Component {
 	// Render the main application element
 	render( ) {
 		return (
-			<div className = "flexify">
-				<header>
-					<Panel id= "menu" />
-					<Header
-						id 		 = "header"
-						title 	 = "Home"
-						subtitle = "Welcome stranger"
-						name	 = "Identity"
-						logo	 = ""
-					/>
-				</header>
-				<Main>
-					<Section content = { <Lorem /> } />
-				</Main>
-				<Footer
-					owner = "Mentor Palokaj"
-				 />
-			</div>
+			<Provider store = { store } >
+				<div className = "flexify">
+					<header>
+						<Panel id= "menu" />
+						<Header
+							id 		 = "header"
+							title 	 = "Home"
+							subtitle = "Welcome stranger"
+							name	 = "Whiteleaf"
+							logo	 = ""
+						/>
+					</header>
+					<Main>
+						<Section content = { <Lorem /> } />
+					</Main>
+					<Footer
+						owner = "Mentor Palokaj"
+					 />
+				</div>
+			</Provider>
 		)
 	}
 }
