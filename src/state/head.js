@@ -1,5 +1,6 @@
 import React from 'react'
 import { PanelView, MenuView } from '../stateless/head-views'
+import PropTypes from 'prop-types'
 
 // The menu logic
 
@@ -42,4 +43,8 @@ export class Panel extends React.Component {
 			</div>
 		)
 	}
+}
+
+Panel.propTypes = {
+	id: PropTypes.string
 }

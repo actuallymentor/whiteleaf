@@ -1,8 +1,9 @@
 // Import react
 import React from 'react'
+import PropTypes from 'prop-types'
 
 // Define a menu rendering component that takes props
-export const PanelView = ( { children, visible, toggle, name, logo, action } ) => {
+export const PanelView = ( { children, visible, toggle } ) => {
 	// Fill the <nav><ul> element with the above <li>'s
 	return (
 		<span>
@@ -15,11 +16,18 @@ export const PanelView = ( { children, visible, toggle, name, logo, action } ) =
 			  </span>
 			</button>
 			<nav className = { visible ? 'full absolute-show' : 'full absolute-out-right' } >
-				<h3 className = "depth" id = "menutitle" >{ action }</h3>
+				<h3 className = "depth" id = "menutitle" >Menu</h3>
+				{ /* Children is the MenuView */ }
 				{ children }
 			</nav>
 		</span>
 	)
+}
+
+PanelView.propTypes = {
+	children: PropTypes.object,
+	visible: PropTypes.bool.isRequired,
+	toggle: PropTypes.func.isRequired
 }
 
 // Menu items
