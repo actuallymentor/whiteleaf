@@ -7,7 +7,6 @@ import { Panel } from './state/head'
 import Footer from './stateless/footer-views'
 
 import { HeaderView } from './stateless/head-views'
-import { SectionView, MainView } from './stateless/body-views'
 
 // Firebase
 import app from './modules/firebase'
@@ -43,12 +42,14 @@ class App extends React.Component {
 							logo	 = ""
 						/>
 					</header>
-					<MainView>
-						<SectionView content = { <Lorem /> } />
-					</MainView>
-					<Footer
-						owner = "Mentor Palokaj"
-					 />
+					<main>
+						<div className="container">
+							<section>
+								<Lorem />
+							</section>
+						</div>
+					</main>
+					<Footer owner = "Mentor Palokaj" />
 				</div>
 			</Provider>
 		)

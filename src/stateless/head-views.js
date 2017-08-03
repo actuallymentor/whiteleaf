@@ -31,7 +31,7 @@ PanelView.propTypes = {
 }
 
 // Menu items
-export const MenuView = ( { links, register, login } )  =>  {
+export const MenuView = ( { links } )  =>  {
 	// Generate menu list from items array
 	let menuitems = links.map ( ( item, index ) => {
 		return (
@@ -45,6 +45,10 @@ export const MenuView = ( { links, register, login } )  =>  {
 			{menuitems}
 		</ul>
 	)
+}
+
+MenuView.propTypes = {
+	links: PropTypes.array
 }
 
 export const HeaderView =  ( { id, title, subtitle, name, logo } )  => (
@@ -64,3 +68,11 @@ export const HeaderView =  ( { id, title, subtitle, name, logo } )  => (
 		</p>
 	</div>
 )
+
+HeaderView.propTypes = { 
+	id: PropTypes.string,
+	title: PropTypes.string.isRequired,
+	subtitle: PropTypes.string,
+	name: PropTypes.string.isRequired,
+	logo: PropTypes.string
+}
