@@ -13,11 +13,7 @@ import app from './modules/firebase'
 
 // Redux
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
-import reducer from './redux/reducers'
-import actions from './redux/actions'
-
-let store = createStore( reducer )
+import store from './redux/store'
 
 // Css
 import './styles/styles.scss'
@@ -55,6 +51,5 @@ class App extends React.Component {
 		)
 	}
 }
-
 
 ReactDOM.render( <App />, document.getElementById('container') )

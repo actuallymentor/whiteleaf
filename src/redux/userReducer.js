@@ -1,8 +1,8 @@
-const appstate = ( state = { user: null }, action ) => {
+const userReducer = ( state = null, action ) => {
 	switch( action.type ) {
 
 		case "login":
-			return { user: user }
+			return { ...state, ...action.user }
 		break
 
 		// Just return the state if no known action is specified
@@ -11,4 +11,4 @@ const appstate = ( state = { user: null }, action ) => {
 	}
 }
 
-export default appstate
+export default userReducer
