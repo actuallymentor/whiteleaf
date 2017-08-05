@@ -1,14 +1,15 @@
-import { combineReducers, createStore } from 'redux'
+import { applyMiddleware, combineReducers, createStore } from 'redux'
 import userReducer from './userReducer'
+import logger from 'redux-logger'
 
 const reducers = combineReducers( { 
 	user: userReducer,
 	
  } )
 
-let store = createStore( reducers )
+const middleware = applyMiddleware( logger )
+const store = createStore( reducers, middleware )
 
-store.subscribe( f => { console.log( store.getState() ) } )
 store.dispatch( { type: 'login', user: { name: 'Mentor' } } )
 
 export default store
