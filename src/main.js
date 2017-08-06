@@ -1,4 +1,5 @@
-console.log('Main js loaded')
+const dev = process.env.NODE_ENV == 'development' ? true : false
+if ( dev ) console.log('Main js loaded')
 import React from 'react'
 import ReactDOM from 'react-dom'
 
@@ -6,7 +7,7 @@ import ReactDOM from 'react-dom'
 import { Panel } from './state/head'
 import Footer from './stateless/footer-views'
 
-import { HeaderView } from './stateless/head-views'
+import HeaderHero from './components/smart-header-hero'
 
 // Firebase
 import app from './modules/firebase'
@@ -30,10 +31,8 @@ class App extends React.Component {
 				<div className = "flexify">
 					<header>
 						<Panel id= "menu" />
-						<HeaderView
+						<HeaderHero
 							id 		 = "header"
-							title 	 = "Home"
-							subtitle = "Welcome stranger"
 							name	 = "Whiteleaf"
 							logo	 = ""
 						/>

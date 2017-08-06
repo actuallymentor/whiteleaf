@@ -50,29 +50,3 @@ export const MenuView = ( { links } )  =>  {
 MenuView.propTypes = {
 	links: PropTypes.array
 }
-
-export const HeaderView =  ( { id, title, subtitle, name, logo } )  => (
-	<div id = { id } className = "valign" >
-		<a href = "/" className = "depth" id = "identity">
-			<img
-				id = "logo"
-				src= { logo }
-				className = { logo ? "" : "hide" } />
-			 { name }
-		</a>
-		<h1 id = "title" className="depth nomar" >
-			 { title }
-		</h1>
-		<p id = "subtitle" className="depth" >
-			 { subtitle }
-		</p>
-	</div>
-)
-
-HeaderView.propTypes = { 
-	id: PropTypes.string,
-	title: PropTypes.string.isRequired,
-	subtitle: PropTypes.string,
-	name: PropTypes.string.isRequired,
-	logo: PropTypes.string
-}

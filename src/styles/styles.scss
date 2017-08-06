@@ -132,6 +132,13 @@ body {
 	margin: 0;
 }
 
+.link { 
+	color: $accent-color;
+	&:hover { 
+		text-decoration: underline;
+	 }
+ }
+
 .mouse {
 	cursor: pointer;
 }
@@ -204,6 +211,14 @@ h1 {
 p {
 	@include font-size($p-font-sizes);
 }
+
+// Forms
+
+input { 
+	border: none;
+	padding: 10px;
+	margin: 2px 5px;
+ }
 
 // Menu styles
 #menu {
