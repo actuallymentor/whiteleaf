@@ -6,7 +6,15 @@ export const login = ( email, password ) => ( {
 	payload: app.login( email, password ).then( f => app.currentUser() )
  } )
 
-export const register = ( email, password ) => ( { 
+export const logout = f => ( { 
+	type: 'LOGOUT',
+	payload: app.logout( )
+ } )
+
+export const register = ( name, email, password ) => ( { 
 	type: 'REGISTER',
-	payload: app.register( email, password ).then( f => app.currentUser() )
+	payload: app.register( email, password )
+	.then( f => app.currentUser() )
+	.then( user => user.updateProfile( { displayName: name } ) )
+	.then( f => app.currentUser() )
  } )

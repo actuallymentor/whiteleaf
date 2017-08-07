@@ -19,6 +19,7 @@ class HeaderHeroLogic extends React.Component {
 		this.loginSubmit = this.loginSubmit.bind( this )
 		this.registerSubmit = this.registerSubmit.bind( this )
 		this.toggleIntent = this.toggleIntent.bind( this )
+		this.logout = this.logout.bind( this )
 	 }
 
 	 toggleIntent( ) { 
@@ -41,10 +42,15 @@ class HeaderHeroLogic extends React.Component {
 		
 		const email = e.target.remail.value
 		const password = e.target.remail.value
+		const name = e.target.rname.value
 
 		if ( !email || !password ) return alert( 'Invalid email or password.' )
-		this.props.dispatch( user.register( email, password ) )
+		this.props.dispatch( user.register( name, email, password ) )
 	 }
+
+	 logout( ) { 
+	 	this.props.dispatch( user.logout( ) )
+	  }
 
 	render( ) { 
 		// Destructure the props
@@ -64,12 +70,13 @@ class HeaderHeroLogic extends React.Component {
 				 { name }
 			</a>
 			<h1 id = "title" className="depth nomar" >
-				Hello { user ? `${ user.email }!` : 'Stranger!' }
+				Hello { user ? `${ user.name || user.email }!` : 'Stranger!' }
 			</h1>
 			<p id = "subtitle" className="depth" >
 				{ user ? `Welcome back you delightful person you.` : 'You should log in.'  }
 			</p>
-			{ user ? false : form }
+
+			{ user ? <span onClick = { this.logout } className="mouse link">Logout</span> : form }
 		</div>
 	 }
  }

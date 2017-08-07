@@ -1,36 +1,26 @@
 const dev = process.env.NODE_ENV == 'development' ? true : false
 
 const userReducer = ( state = false, action ) => {
+
 	switch( action.type ) {
 
-		// Login action logic
-		case "LOGIN_PENDING":
-			if ( dev ) console.log( 'Login was requested with ', action.payload )
-			return state
-		break
+		// Login/register action logic
 		case "LOGIN_FULFILLED":
-			if ( dev ) console.log( 'Login fulfilled with', action.payload )
+		case "REGISTER_FULFILLED":
 			// Payload contains the result of the firebase login promise chain
-			return { ...state, email: action.payload.email }
+			return { ...state, email: action.payload.email, name: action.payload.displayName }
 		break
+
+		case "REGISTER_REJECTED":
 		case "LOGIN_REJECTED":
-			if ( dev ) console.log( 'Login rejected with', action.payload )
 			return state
 		break
 
-		// Register action logic
-		case "REGISTER_PENDING":
-			if ( dev ) console.log( 'Login was requested with ', action.payload )
-			return state
-		break
-		case "REGISTER_FULFILLED":
-			if ( dev ) console.log( 'Login fulfilled with', action.payload )
-			// Payload contains the result of the firebase login promise chain
-			return { ...state, email: action.payload.email }
-		break
-		case "REGISTER_REJECTED":
-			if ( dev ) console.log( 'Login rejected with', action.payload )
-			return state
+	
+		// Logout action logic
+		case "LOGOUT_FULFILLED":
+			// Returning null here causes state.user to be nothing
+			return null
 		break
 
 		// Just return the state if no known action is specified
