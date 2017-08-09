@@ -1,5 +1,5 @@
 import React from 'react'
-import { PanelView, MenuView } from '../stateless/head-views'
+import { PanelView, MenuView } from './dumb-header-views'
 import PropTypes from 'prop-types'
 
 // The menu logic

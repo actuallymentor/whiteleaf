@@ -4,8 +4,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 // Visual elements
-import { Panel } from './state/head'
-import Footer from './stateless/footer-views'
+import { Panel } from './components/smart-header-panel'
+import Footer from './components/dumb-footer'
 
 import HeaderHero from './components/smart-header-hero'
 
@@ -19,8 +19,6 @@ import store from './redux/store'
 // Css
 import './styles/styles.scss'
 
-// Placeholder text
-import Lorem from './stateless/lorem-ipsum-view'
 
 class App extends React.Component {
 
@@ -40,7 +38,7 @@ class App extends React.Component {
 					<main>
 						<div className="container">
 							<section>
-								<Lorem />
+								Bodybody!
 							</section>
 						</div>
 					</main>
