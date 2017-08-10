@@ -6,8 +6,8 @@ import ReactDOM from 'react-dom'
 // Visual elements
 import { Panel } from './components/smart-header-panel'
 import Footer from './components/dumb-footer'
-
 import HeaderHero from './components/smart-header-hero'
+import ContactList from './components/smart-contact-list'
 
 // Firebase
 import app from './modules/firebase'
@@ -38,7 +38,7 @@ class App extends React.Component {
 					<main>
 						<div className="container">
 							<section>
-								Bodybody!
+								<ContactList />
 							</section>
 						</div>
 					</main>

@@ -1,9 +1,10 @@
-const contactReducer = ( state = false, action ) => { 
+const contactReducer = ( state = null, action ) => { 
 
 	switch( action.type ) { 
 
 		case 'GETALL_FULFILLED':
-			return { ...state, contacts: action.payload.friends }
+		// action.payload is an array resulting from a transformed firebase call
+			return action.payload ? action.payload : state
 		break
 
 		case 'ADDONE_FULFILLED':
@@ -16,3 +17,5 @@ const contactReducer = ( state = false, action ) => {
 	 }
 
  }
+
+ export default contactReducer

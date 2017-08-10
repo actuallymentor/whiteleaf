@@ -1,6 +1,6 @@
 const dev = process.env.NODE_ENV == 'development' ? true : false
 
-const userReducer = ( state = false, action ) => {
+const userReducer = ( state = null, action ) => {
 
 	switch( action.type ) {
 

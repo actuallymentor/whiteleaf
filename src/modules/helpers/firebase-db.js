@@ -3,6 +3,8 @@
 // for writing data to the db
 // ///////////////////////////////
 
+const dev = process.env.NODE_ENV == 'development' ? true : false
+
 // Use the .set() function to overwrite a node
 export const overwrite = ( app, path, data ) => {
 	return app.currentUser().then( user => {
@@ -20,7 +22,8 @@ export const append = ( app, path, data ) => {
 // Read a db snapshot and return it
 export const read = ( app, path ) => {
 	return app.currentUser().then( user => {
-		return app.db.ref( `users/${user.uid}/${path}` ).once( 'value' )
+		if ( dev ) console.log( `Database GET on users/${user.uid}/${path}` )
+		return app.db.ref( `users/${user.uid}/${path}` ).once( 'value' ).then( snapshot => snapshot.val() )
 	} )
 }
 
