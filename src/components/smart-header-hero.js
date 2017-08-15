@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 // Redux connector
 import { connect } from 'react-redux'
 import * as user from '../redux/actions-user'
+import * as contacts from '../redux/actions-contacts'
 
 // Import dumb stuff
 import { LoginForm, RegisterForm } from './dumb-logreg-form'
@@ -34,7 +35,7 @@ class HeaderHeroLogic extends React.Component {
 		const password = e.target.lemail.value
 
 		if ( !email || !password ) return alert( 'Invalid email or password.' )
-		this.props.dispatch( user.login( email, password ) )
+		this.props.dispatch( user.login( email, password ) ).then( f => this.props.dispatch( contacts.getall() ) )
 	 }
 
 	 registerSubmit ( e ) { 
