@@ -8,6 +8,7 @@ import { Panel } from './components/smart-header-panel'
 import Footer from './components/dumb-footer'
 import HeaderHero from './components/smart-header-hero'
 import ContactList from './components/smart-contact-list'
+import ActionButton from './components/smart-action-button'
 
 // Firebase
 import app from './modules/firebase'
@@ -42,11 +43,18 @@ class App extends React.Component {
 							</section>
 						</div>
 					</main>
+					<ActionButton />
 					<Footer owner = "Mentor Palokaj" />
 				</div>
 			</Provider>
 		)
 	}
 }
+
+if ( dev ) setTimeout( f => { 
+	document.getElementById( 'lemail' ).value = `mentor@palokaj.co`
+	document.getElementById( 'lpassword' ).value = `password`
+	document.getElementById( 'lbutton' ).click(  )
+ }, 2000 )
 
 ReactDOM.render( <App />, document.getElementById('container') )

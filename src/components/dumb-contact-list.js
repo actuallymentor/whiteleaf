@@ -2,7 +2,6 @@
 import React from 'react'
 
 const List = ( { contacts } ) => {
-	console.log( contacts )
 	if ( contacts )
 		return <ul>{ contacts.map( ( contact, i ) => <li key = { `contact${i}` }>{ contact.name }</li> ) }</ul>
 	else

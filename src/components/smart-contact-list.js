@@ -16,8 +16,12 @@ class ContactList extends React.Component {
 		this.contacts = this.contacts.bind( this )
 	 }
 
-	contacts( ) { 
+	 componentWillMount( ) { 
+	 	// If we are logged in but there are no contaxts yet, get the contacts
 	 	if ( this.props.user && !this.props.contacts ) this.props.dispatch( contacts.getall() )
+	  }
+
+	contacts( ) { 
 	 	return this.props.contacts || null
 	  }
 
@@ -27,7 +31,7 @@ class ContactList extends React.Component {
 
 	 	return <div>
 	 		{ user ? 'These are your contacts' : 'Once you log in your contacts will show here' }
-	 		<List contacts = { this.contacts() } />
+	 		{ user ? <List contacts = { this.contacts() } /> : '' }
 	 	</div>
 	  }
  }
