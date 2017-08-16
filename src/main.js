@@ -4,11 +4,11 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 // Visual elements
-import { Panel } from './components/smart-header-panel'
-import Footer from './components/dumb-footer'
-import HeaderHero from './components/smart-header-hero'
-import ContactList from './components/smart-contact-list'
-import ActionButton from './components/smart-action-button'
+import { Panel } from './components/header-panel-smart'
+import Footer from './components/footer-dumb'
+import HeaderHero from './components/header-hero-smart'
+import ContactList from './components/contact-list-smart'
+import ActionButton from './components/action-button-smart'
 
 // Firebase
 import app from './modules/firebase'
@@ -55,6 +55,6 @@ if ( dev ) setTimeout( f => {
 	document.getElementById( 'lemail' ).value = `mentor@palokaj.co`
 	document.getElementById( 'lpassword' ).value = `password`
 	document.getElementById( 'lbutton' ).click(  )
- }, 2000 )
+ }, 1000 )
 
 ReactDOM.render( <App />, document.getElementById('container') )

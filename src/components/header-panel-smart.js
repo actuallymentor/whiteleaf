@@ -1,5 +1,5 @@
 import React from 'react'
-import { PanelView, MenuView } from './dumb-header-views'
+import { PanelView, MenuView } from './header-dumb'
 import PropTypes from 'prop-types'
 
 // The menu logic

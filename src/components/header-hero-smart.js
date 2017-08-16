@@ -8,7 +8,7 @@ import * as user from '../redux/actions-user'
 import * as contacts from '../redux/actions-contacts'
 
 // Import dumb stuff
-import { LoginForm, RegisterForm } from './dumb-logreg-form'
+import { LoginForm, RegisterForm } from './logreg-form-dumb'
 
 class HeaderHeroLogic extends React.Component {
 

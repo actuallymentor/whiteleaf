@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 import * as contacts from '../redux/actions-contacts'
 
 // Dumb components
-import List from './dumb-contact-list'
+import List from './contact-list-dumb'
 
 class ContactList extends React.Component { 
 

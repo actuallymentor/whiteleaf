@@ -14,7 +14,7 @@ $hover-speed: 0.3s;
 
 @mixin hover-element ( $speed) {
 	transition: $speed;
-	box-shadow: 0 8px 5px rgba(0, 0, 0, 0.3);
+	box-shadow: 4px 4px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 // Header configs
@@ -104,12 +104,19 @@ body {
 .depth {
 	transition: $hover-speed;
 	&:hover {
-		@include hover-txt ( $hover-speed) opacity: 0.8;
+		@include hover-txt ( $hover-speed ) opacity: 0.8;
 	}
 }
 
+.objdepth { 
+	transition: $hover-speed;
+	&:hover {
+		@include hover-element ( $hover-speed ) opacity: 0.8;
+	}
+ }
+
 .shadow {
-	@include hover-txt ( $hover-speed)
+	@include hover-txt ( $hover-speed )
 }
 
 // Alignment helpers
@@ -170,6 +177,55 @@ body {
 	opacity: 1;
 	transition: 0s;
 }
+
+.actioncontainer { 
+    transition: 0.3s;
+    height: 50px;
+    width: 50px;
+    position: fixed;
+    bottom: 50px;
+    right: 25px;
+    transition-delay: 2s;
+	.actionbtn { 
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		display: flex;
+		width: 50px;
+		height: 50px;
+		margin: auto;
+		border-radius: 50%;
+		background: $accent-color;
+		color: white;
+		transition: 0.3s;
+		box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.3);
+		&:hover { 
+			box-shadow: 0 8px 5px 0 rgba(0, 0, 0, 0.3);
+			transform: scale( 1.05 );
+		 }
+		 .icon { 
+		 	display: flex;
+		    flex: auto;
+		    align-items: center;
+		    justify-content: center;
+		  }
+
+	 }
+	 .intentbtn { 
+			@extend .actionbtn;
+			display: flex;
+		 	transform: scale(0.8);
+    		bottom: 0;
+    		opacity: 0;
+  			transition: all .8s ease;
+		 }
+	 &:hover { 
+	 	.intentbtn { opacity: 1; }
+	 	#addcontact { bottom: 60px; }
+	 	#addmeeting { bottom: 115px; }
+	  }
+ }
+
 
 // Typography
 $breakpoints: ( small: 480px,
