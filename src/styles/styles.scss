@@ -179,6 +179,7 @@ body {
 }
 
 .actioncontainer { 
+	$hoverdelay: .3s;
     transition: 0.3s;
     height: 50px;
     width: 50px;
@@ -188,6 +189,7 @@ body {
     transition-delay: 2s;
 	.actionbtn { 
 		position: absolute;
+		z-index: 2;
 		bottom: 0;
 		right: 0;
 		display: flex;
@@ -201,28 +203,52 @@ body {
 		box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.3);
 		&:hover { 
 			box-shadow: 0 8px 5px 0 rgba(0, 0, 0, 0.3);
-			transform: scale( 1.05 );
 		 }
 		 .icon { 
 		 	display: flex;
 		    flex: auto;
 		    align-items: center;
 		    justify-content: center;
+		    transition: transform .5s $hoverdelay;
+		    border-radius: 50%;
 		  }
 
 	 }
 	 .intentbtn { 
 			@extend .actionbtn;
 			display: flex;
+			z-index: 1;
 		 	transform: scale(0.8);
     		bottom: 0;
     		opacity: 0;
-  			transition: all .8s ease;
-		 }
+    		transition: bottom .4s ease $hoverdelay, opacity .4s ease $hoverdelay, box-shadow .4s ease 0s;
+    		.actionlabel { 
+			    position: absolute;
+			    padding: 5px 10px;
+			    font-size: 15px;
+			    border-radius: 2px;
+			    background: rgba(0,0,0,0.5);
+			    right: 0;
+			    top: 10px;
+			    transition: all .4s ease $hoverdelay;
+    		}
+	 }
 	 &:hover { 
-	 	.intentbtn { opacity: 1; }
-	 	#addcontact { bottom: 60px; }
-	 	#addmeeting { bottom: 115px; }
+	 	.actionbtn:nth-child( 1 ) .icon { 
+	 		transform: rotate( 225deg );
+	 	 }
+	 	.intentbtn {
+	 		opacity: 1;
+	 		.actionlabel {
+	 			right: 70px;
+	 		}
+	 	}
+	 	.intentbtn:nth-child( 2 ) { 
+	 		bottom: 60px;
+	 	 }
+	 	.intentbtn:nth-child( 3 ) { 
+	 		bottom: 115px;
+	 	 }
 	  }
  }
 

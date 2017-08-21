@@ -11,11 +11,12 @@ const View = ( { user } ) => {
 				<div id = 'mainaction' className = 'actionbtn ripple'>
 					<span className = 'icon' > + </span>
 				</div>
-				<div id='addcontact' className = 'intentbtn ripple'>
-					<span className = 'icon' > - </span>
+				<div className = 'intentbtn'>
+					<span className = 'icon ripple' > a </span>
+					<span className = 'actionlabel'> things </span>
 				</div>
-				<div id='addmeeting' className = 'intentbtn ripple'>
-					<span className = 'icon' > - </span>
+				<div className = 'intentbtn'>
+					<span className = 'icon ripple' > b </span>
 				</div>
 			</div> 
  }
