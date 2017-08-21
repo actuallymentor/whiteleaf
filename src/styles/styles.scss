@@ -52,6 +52,14 @@ body {
 	position: relative;
 	overflow: hidden;
 }
+.backdrop { 
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0, 0, 0, 0.7);
+ }
 
 // Sticky footer
 .flexify {
@@ -179,13 +187,14 @@ body {
 }
 
 .actioncontainer { 
+	$size: 55px;
 	$hoverdelay: .3s;
     transition: 0.3s;
-    height: 50px;
-    width: 50px;
+    height: $size;
+    width: $size;
     position: fixed;
-    bottom: 50px;
-    right: 25px;
+    bottom: $size;
+    right: $size/2;
     transition-delay: 2s;
 	.actionbtn { 
 		position: absolute;
@@ -193,8 +202,8 @@ body {
 		bottom: 0;
 		right: 0;
 		display: flex;
-		width: 50px;
-		height: 50px;
+		width: $size;
+		height: $size;
 		margin: auto;
 		border-radius: 50%;
 		background: $accent-color;
@@ -224,12 +233,14 @@ body {
     		transition: bottom .4s ease $hoverdelay, opacity .4s ease $hoverdelay, box-shadow .4s ease 0s;
     		.actionlabel { 
 			    position: absolute;
+			    top: 50%;
+			    transform: translateY(-50%);
+			    width: max-content;
 			    padding: 5px 10px;
 			    font-size: 15px;
 			    border-radius: 2px;
 			    background: rgba(0,0,0,0.5);
 			    right: 0;
-			    top: 10px;
 			    transition: all .4s ease $hoverdelay;
     		}
 	 }
@@ -240,14 +251,14 @@ body {
 	 	.intentbtn {
 	 		opacity: 1;
 	 		.actionlabel {
-	 			right: 70px;
+	 			right: $size * 1.5;
 	 		}
 	 	}
 	 	.intentbtn:nth-child( 2 ) { 
-	 		bottom: 60px;
+	 		bottom: $size + $size / 5;
 	 	 }
 	 	.intentbtn:nth-child( 3 ) { 
-	 		bottom: 115px;
+	 		bottom: $size * 2 + $size / 5;
 	 	 }
 	  }
  }

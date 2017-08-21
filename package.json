@@ -15,7 +15,7 @@
     "grf": "generate.js"
   },
   "scripts": {
-    "start": "NODE_ENV=development webpack --progress -d --watch",
+    "start": "git pull && NODE_ENV=development webpack --progress -d --watch",
     "test": "for file in ./test/*.js \n do \n mocha --timeout 10000 --compilers js:babel-core/register $file \n done ",
     "build": "NODE_ENV=production webpack --progress -p"
   },
