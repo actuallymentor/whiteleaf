@@ -1,0 +1,153 @@
+// Container definitions
+.container {
+	width: 100%;
+	margin: 50px 0;
+	@include min-size ( $mobile) {
+		width: 100%;
+		margin: 10px 0;
+	}
+	@include min-size ( $tablet) {
+		width: 80%;
+		margin: 10px 10%;
+	}
+	@include min-size ( $laptop) {
+		width: 50%;
+		margin: 50px 25%;
+	}
+}
+
+section {
+	padding: 20px;
+}
+// App container defs
+#container {
+	position: relative;
+	overflow: hidden;
+}
+
+// Sticky footer
+.flexify {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+main {
+	flex: 1 0 auto;
+}
+
+// Browser stylesheet overrides
+button:focus {
+	outline: 0px;
+}
+
+body {
+	margin: 0;
+}
+
+// Visibility helpers
+.hide {
+	display: none;
+}
+
+.show {
+	display: block;
+}
+
+.absolute-show {
+	left: 0;
+	top: 0;
+}
+
+.absolute-out-right {
+	position: absolute;
+	left: 100vw;
+	top: 0;
+}
+
+// Sizing helpers
+.full {
+	position: absolute;
+	top: 0;
+	min-height: 100vh;
+	width: 100vw;
+}
+
+.depth {
+	transition: $hover-speed;
+	&:hover {
+		@include hover-txt ( $hover-speed ) opacity: 0.8;
+	}
+}
+
+.objdepth { 
+	transition: $hover-speed;
+	&:hover {
+		@include hover-element ( $hover-speed ) opacity: 0.8;
+	}
+ }
+
+.shadow {
+	@include hover-txt ( $hover-speed )
+}
+
+// Alignment helpers
+.valign {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+// Styling helpers
+.white {
+	color: white;
+}
+
+.center {
+	text-align: center;
+}
+
+.nomar {
+	margin: 0;
+}
+
+.link { 
+	color: $accent-color;
+	&:hover { 
+		text-decoration: underline;
+	 }
+ }
+
+.mouse {
+	cursor: pointer;
+	text-decoration: none!important;
+	@extend .depth;
+}
+
+.ripple {
+	position: relative;
+	overflow: hidden;
+}
+
+.ripple:after {
+	content: "";
+	background: rgba(0, 0, 0, 0.3);
+	display: block;
+	position: absolute;
+	border-radius: 50%;
+	padding-top: 240%;
+	padding-left: 240%;
+	margin-top: -120%;
+	margin-left: -120%;
+	opacity: 0;
+	transition: all $menu-transition-speed;
+}
+
+.ripple:active:after {
+	padding-top: 0;
+	padding-left: 0;
+	margin-top: 0;
+	margin-left: 0;
+	opacity: 1;
+	transition: 0s;
+}

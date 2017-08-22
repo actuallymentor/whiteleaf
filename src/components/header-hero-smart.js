@@ -70,10 +70,10 @@ class HeaderHeroLogic extends React.Component {
 					className = { logo ? "" : "hide" } />
 				 { name }
 			</a>
-			<h1 id = "title" className="depth nomar" >
+			<h1 id = "title" className="nomar" >
 				Hello { user ? `${ user.name || user.email }!` : 'Stranger!' }
 			</h1>
-			<p id = "subtitle" className="depth" >
+			<p id = "subtitle" >
 				{ user ? `Welcome back you delightful person you.` : 'You should log in.'  }
 			</p>
 

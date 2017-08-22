@@ -36,10 +36,10 @@ class App {
 	deleteUser( ) 				{ return user.destroy( this ) }
 
 	// CONTACT MANAGEMENT
-	addContact( name, bio, channels )  { return contacts.create ( this, name, bio, channels ) }
-	getContacts( )					   { return contacts.get( this ) }
-	updateContact( id, data )		   { return contacts.update( this, id, data ) }
-	destroyContact( id )			   { return contacts.destroy( this, id ) }
+	addContact( name, bio, email, frequency )  { return contacts.create ( this, name, bio, email, frequency ) }
+	getContacts( )					   		   { return contacts.get( this ) }
+	updateContact( id, data )				   { return contacts.update( this, id, data ) }
+	destroyContact( id )			           { return contacts.destroy( this, id ) }
 
 	// MEETING MANAGEMENT
 	addMeeting( contactid, date, location, meetingnotes ) { return meetings.create( this, contactid, date, location, meetingnotes ) }

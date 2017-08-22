@@ -22,9 +22,9 @@ const MakeObjArray = ( values ) => {
 
 
 // Add a contact
-export const create = ( app, name, bio, channels ) => {
+export const create = ( app, name, bio, email, frequency ) => {
 	// Write data to user's contacts child
-	return db.append( app, 'contacts', { name: name, bio: bio, channels: channels } )
+	return db.append( app, 'contacts', { name: name, bio: bio, email: email, frequency: frequency } )
 }
 
 // Read a speficic contact from db

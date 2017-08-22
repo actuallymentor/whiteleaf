@@ -28,7 +28,27 @@ const Button = ( { addContact, addMeeting, user } ) => {
 const AddContact = ( { adding, clearModals } ) => { 
 	if ( !adding ) return false
 	return <div className = 'backdrop' onClick = { clearModals } >
-				<div>Add a new person</div>
+				<div onClick = { e => e.stopPropagation() } className = 'modal col l6 m12 s12'>
+					<form className = "modalform row nomar">
+						<div className="input col l6 m6 s12">
+							<div className="label">Who are we adding?</div>
+							<input className="col s12 m12 l12" name="name" type="text" placeholder="Tony Stark" required/>
+						</div>
+						<div className="input col l6 m6 s12">
+							<div className="label">Why are they awesome?</div>
+							<input className="col s12 m12 l12" name="bio" type="text" placeholder="They said we are friends once, I like that." />
+						</div>
+						<div className="input col l6 m6 s12">
+							<div className="label">Carrier pidgeon address?</div>
+							<input className="col s12 m12 l12" name="email" type="email" placeholder="best@friend.evs" />
+						</div>
+						<div className="input col l6 m6 s12">
+							<div className="label">Stalk them every how many days?</div>
+							<input className="col s12 m12 l12" name="frequency" type="number" placeholder="Over 9000" required />
+						</div>
+						<input type="submit" value="save" className="col l2 offset-l5 m4 offset-m4 s12" />
+					</form>
+				</div>
 		   </div>
  }
 
