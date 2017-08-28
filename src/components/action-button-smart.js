@@ -12,6 +12,7 @@ import * as meetings from '../redux/actions-meetings'
 // String of today
 const date = new Date( Date.now( ) )
 const today = `${date.getDate( )}-${date.getMonth( ) +1}-${date.getFullYear( )}`
+const dateregex = "/(^(((0[1-9]|1[0-9]|2[0-8])[-](0[1-9]|1[012]))|((29|30|31)[-](0[13578]|1[02]))|((29|30)[-](0[4,6,9]|11)))[-](19|[2-9][0-9])\d\d$)|(^29[-]02[-](19|[2-9][0-9])(00|04|08|12|16|20|24|28|32|36|40|44|48|52|56|60|64|68|72|76|80|84|88|92|96)$)/"
 
 const Button = ( { addContact, addMeeting, user } ) => {
 	if ( !user ) return false
@@ -66,7 +67,7 @@ const AddMeeting = ( { selectUser, meetingFriend, searchResults, findUser, handl
 	const meetingData = <div>
 							<div className="input col l6 m6 s12">
 								<div className="label">When did you talk? (dd-mm-yyyy)</div>
-								<input className="col s12 m12 l12" name="date" type="date" defaultValue={ today } pattern="\d{1,2}-\d{1,2}-\d{4}" required/>
+								<input className="col s12 m12 l12" name="date" type="date" defaultValue={ today } pattern={ dateregex } title="Date format is day-month-year. Sorry if you are metrically impaired, it's not your fault, it's how you were raised." required/>
 							</div>
 							<div className="input col l6 m6 s12">
 								<div className="label">Where did you meet/chat?</div>
