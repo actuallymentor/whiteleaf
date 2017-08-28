@@ -5,7 +5,7 @@ export const getall = f => ( {
 	payload: app.getContacts( )
  } )
 
-export const addcontact = ( name, bio, channels ) => ( { 
+export const addcontact = ( name, bio, email, frequency ) => ( { 
 	type: 'ADDONE',
-	payload: app.addContact( name, bio, channels )
+	payload: app.addContact( name, bio, email, frequency )
  } )

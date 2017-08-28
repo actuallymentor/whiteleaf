@@ -105,6 +105,9 @@ body {
 
 .center {
 	text-align: center;
+	&::placeholder { 
+		text-align: center;
+	 }
 }
 
 .nomar {
