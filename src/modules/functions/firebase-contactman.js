@@ -29,8 +29,12 @@ export const create = ( app, name, bio, email, frequency ) => {
 
 // Read a speficic contact from db
 export const get = ( app ) => {
+	const makeMeetingsArray = contact => {
+		contact.meetings = MakeObjArray( contact.meetings )
+		return contact
+	}
 	// Read a node
-	return db.read( app, `contacts` ).then( MakeObjArray )
+	return db.read( app, `contacts` ).then( MakeObjArray ).then( contacts => contacts.map( contact => makeMeetingsArray( contact ) ) )
 }
 
 // Update an existing contact

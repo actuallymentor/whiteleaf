@@ -11,8 +11,6 @@ export const create = ( app, contactid, date, location, meetingnotes ) => {
 	return db.append( app, `contacts/${contactid}/meetings`, { date: date, location: location, notes: meetingnotes } )
 }
 
-// BELOW IS JUST COPY PASTE OF CONTACTS
-
 // Read a speficic contact from db
 export const get = ( app, contactid ) => db.read( app, `contacts/${contactid}/meetings` )
 

@@ -9,6 +9,7 @@ import * as contacts from '../redux/actions-contacts'
 // Dumb components
 import List from './contact-list-dumb'
 
+
 class ContactList extends React.Component { 
 
 	constructor( props ) { 
@@ -16,12 +17,12 @@ class ContactList extends React.Component {
 	 }
 
 	 render( ) { 
-
 	 	const { user, contacts } = this.props
+	 	console.log( 'render', contacts )
 
 	 	return <div>
 	 		{ user ? 'These are your contacts' : 'Once you log in your contacts will show here' }
-	 		{ user ? <List contacts = { contacts } /> : '' }
+	 		{ user ? <List contacts = { contacts.sort( ( one, two ) => one.lastmeeting > two.lastmeeting ? 1 : -1 ) } /> : '' }
 	 	</div>
 	  }
  }

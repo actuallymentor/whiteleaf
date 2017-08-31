@@ -8,11 +8,11 @@ import { connect } from 'react-redux'
 // Grab revevant actions
 import * as contacts from '../redux/actions-contacts'
 import * as meetings from '../redux/actions-meetings'
+import moment from 'moment'
 
 // String of today
 const date = new Date( Date.now( ) )
 const today = `${date.getDate( )}-${date.getMonth( ) +1}-${date.getFullYear( )}`
-const dateregex = "/(^(((0[1-9]|1[0-9]|2[0-8])[-](0[1-9]|1[012]))|((29|30|31)[-](0[13578]|1[02]))|((29|30)[-](0[4,6,9]|11)))[-](19|[2-9][0-9])\d\d$)|(^29[-]02[-](19|[2-9][0-9])(00|04|08|12|16|20|24|28|32|36|40|44|48|52|56|60|64|68|72|76|80|84|88|92|96)$)/"
 
 const Button = ( { addContact, addMeeting, user } ) => {
 	if ( !user ) return false
@@ -67,7 +67,7 @@ const AddMeeting = ( { selectUser, meetingFriend, searchResults, findUser, handl
 	const meetingData = <div>
 							<div className="input col l6 m6 s12">
 								<div className="label">When did you talk? (dd-mm-yyyy)</div>
-								<input className="col s12 m12 l12" name="date" type="date" defaultValue={ today } pattern={ dateregex } title="Date format is day-month-year. Sorry if you are metrically impaired, it's not your fault, it's how you were raised." required/>
+								<input className="col s12 m12 l12" name="date" type="date" defaultValue={ today } title="Date format is day-month-year. Sorry if you are metrically impaired, it's not your fault, it's how you were raised." required/>
 							</div>
 							<div className="input col l6 m6 s12">
 								<div className="label">Where did you meet/chat?</div>
@@ -77,7 +77,7 @@ const AddMeeting = ( { selectUser, meetingFriend, searchResults, findUser, handl
 								<div className="label">What state secrets did you divulge?</div>
 								<input className="col s12 m12 l12" name="notes" type="text" placeholder="We talked about painging all German trees purple." required/>
 							</div>
-							{ meetingFriend.id ? <input name="contactid" value={ meetingFriend.id } hidden /> : false }
+							{ meetingFriend.id ? <input name="contactid" defaultValue={ meetingFriend.id } hidden /> : false }
 							<input type="submit" value="save" className="col l2 offset-l5 m4 offset-m4 s12" />
 						</div>
 
@@ -140,6 +140,7 @@ class ActionButton extends React.Component {
 	submitMeeting( e ) { 
 		e.preventDefault( )
 		const { date, location, notes, contactid } = e.target
+		if ( !moment( date, 'DD-MM-YYY' ).isValid ) return alert( 'This is not a valid date! Please use the sensical DD-MM-YYY format.' )
 		console.log( contactid, date, location, notes )
 		this.props.dispatch( meetings.add( contactid.value, date.value, location.value, notes.value ) )
 	}
