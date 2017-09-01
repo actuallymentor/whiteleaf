@@ -18,12 +18,8 @@ class ContactList extends React.Component {
 
 	 render( ) { 
 	 	const { user, contacts } = this.props
-	 	console.log( 'render', contacts )
 
-	 	return <div>
-	 		{ user ? 'These are your contacts' : 'Once you log in your contacts will show here' }
-	 		{ user ? <List contacts = { contacts.sort( ( one, two ) => one.lastmeeting > two.lastmeeting ? 1 : -1 ) } /> : '' }
-	 	</div>
+	 	return user ? <List contacts = { contacts.sort( ( one, two ) => one.lastmeeting > two.lastmeeting ? 1 : -1 ) } /> : <div></div>
 	  }
  }
 
