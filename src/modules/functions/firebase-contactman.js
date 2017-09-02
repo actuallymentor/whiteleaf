@@ -33,10 +33,8 @@ const makeObjectMeetingsArray = contacts => {
 		// Empty the meetings key
 		contacts.object[id].meetings = {}
 		if ( !oldmeetings ) contacts.object[id].meetings = { array: [], object: {} }
-			contacts.object[id].meetings.object = oldmeetings
-		contacts.object[id].meetings.array = MakeObjAndArray( oldmeetings )
+		contacts.object[id].meetings = MakeObjAndArray( oldmeetings )
 	}
-	console.log( 'all contacts', contacts )
 	return contacts
 }
 

@@ -8,7 +8,7 @@ export const List = ( { user, contacts, show } ) => {
 	if ( !user ) return false
 	if ( !contacts ) return <p>You have no contacts yet!</p>
 	
-	return <table id="friendtable">
+	return <table className="table">
 				<thead>
 					<tr>
 						<th>Person</th>
@@ -29,11 +29,31 @@ export const List = ( { user, contacts, show } ) => {
 
 export const Person = ( { person, reset } ) => {
 	if ( !person ) return false
-		console.log( person )
-	return <div className="backdrop">
+	const table = <table className="table">
+						<thead>
+							<tr>
+								<th>When</th>
+								<th>Where</th>
+								<th>Notes</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							{ person.meetings.array.map( ( meeting, i ) => (
+								<tr key={i} >
+									<td>{meeting.date}</td>
+									<td>{meeting.location}</td>
+									<td>{meeting.notes}</td>
+								</tr>	
+							) ) }
+						</tbody>
+
+					</table>
+	return <div id="persontable" className="backdrop">
 				<div className = 'modal col l6 m12 s12 center'>
 					<h2>Your history with { person.name }</h2>
-					<a href="#" onClick = { reset } > Close </a>
+					{ person.meetings.array.length == 0 ? <p>You have no history, ha!</p> : table }
+					<a className="closebtn mouse link" href="#" onClick = { reset } > Close </a>
 				</div>
 			</div>
 }

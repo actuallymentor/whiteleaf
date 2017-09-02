@@ -59,6 +59,8 @@ body {
 /* Import action button and modals */
 @import "actionbtn";
 
+/* Data display stuff */
+@import "datadisplay";
 
 // Menu styles
 #menu {
@@ -124,14 +126,6 @@ body {
     }
 }
 
-// Friend overview
-#friendtable { 
-	width: 100%;
-	text-align: center;
-	tr { 
-		line-height: 2em;
-	 }
-}
 
 // header block styles
 #header {
