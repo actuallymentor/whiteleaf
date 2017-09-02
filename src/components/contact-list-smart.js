@@ -14,17 +14,27 @@ class ContactList extends React.Component {
 
 	constructor( props ) { 
 		super( props )
-	 }
+		this.state = {
+			showingPerson: false,
+			thisPerson: false
+		}
+		this.showPerson = this.showPerson.bind( this )
+	}
 
-	 render( ) { 
+	showPerson( e ) {
+		e.preventDefault( )
+		console.log( 'Show', e.target.id )
+		console.log( this.props.contacts )
+	}
+
+	render( ) { 
 	 	const { user, contacts } = this.props
 
-	 	return user ? <List contacts = { contacts.sort( ( one, two ) => one.lastmeeting > two.lastmeeting ? 1 : -1 ) } /> : <div></div>
+	 	return user ? <List show = { this.showPerson } contacts = { contacts.array.sort( ( one, two ) => one.lastmeeting > two.lastmeeting ? 1 : -1 ) } /> : <div></div>
 	  }
- }
+}
 
 export default connect( store => ( { 
 	user: store.user ? true : false,
 	contacts: store.contacts
-
- } ) )( ContactList )
+} ) )( ContactList )
