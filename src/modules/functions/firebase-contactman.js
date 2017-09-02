@@ -26,6 +26,20 @@ const makeArrayMeetingsArray = contacts => {
 	return contacts
 }
 
+const makeObjectMeetingsArray = contacts => {
+	for ( let id in contacts.object ) {
+		// Copy the meetings to new variable
+		const oldmeetings = { ...contacts.object[id].meetings }
+		// Empty the meetings key
+		contacts.object[id].meetings = {}
+		if ( !oldmeetings ) contacts.object[id].meetings = { array: [], object: {} }
+			contacts.object[id].meetings.object = oldmeetings
+		contacts.object[id].meetings.array = MakeObjAndArray( oldmeetings )
+	}
+	console.log( 'all contacts', contacts )
+	return contacts
+}
+
 const addLastMeeting = contacts => {
 	const now = moment()
 	contacts.array = contacts.array.map( contact => { 
@@ -51,7 +65,7 @@ export const create = ( app, name, bio, email, frequency ) => {
 export const get = ( app ) => {
 	
 	// Read a node
-	return db.read( app, `contacts` ).then( MakeObjAndArray ).then( makeArrayMeetingsArray ).then( addLastMeeting )
+	return db.read( app, `contacts` ).then( MakeObjAndArray ).then( makeArrayMeetingsArray ).then( makeObjectMeetingsArray ).then( addLastMeeting )
 }
 
 // Update an existing contact

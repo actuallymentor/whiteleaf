@@ -4,7 +4,8 @@ import moment from 'moment'
 
 const now = moment()
 
-const List = ( { contacts, show } ) => {
+export const List = ( { user, contacts, show } ) => {
+	if ( !user ) return false
 	if ( !contacts ) return <p>You have no contacts yet!</p>
 	
 	return <table id="friendtable">
@@ -26,4 +27,13 @@ const List = ( { contacts, show } ) => {
 		   </table>
 }
 
- export default List
+export const Person = ( { person, reset } ) => {
+	if ( !person ) return false
+		console.log( person )
+	return <div className="backdrop">
+				<div className = 'modal col l6 m12 s12 center'>
+					<h2>Your history with { person.name }</h2>
+					<a href="#" onClick = { reset } > Close </a>
+				</div>
+			</div>
+}
