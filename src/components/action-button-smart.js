@@ -60,11 +60,12 @@ class ActionButton extends React.Component {
 		if ( !moment( date, 'DD-MM-YYY' ).isValid ) return alert( 'This is not a valid date! Please use the sensical DD-MM-YYY format.' )
 		console.log( contactid, date, location, notes )
 		this.props.dispatch( meetings.add( contactid.value, date.value, location.value, notes.value ) )
+		this.clearModals( )
 	}
 
 	findUser( e ) { 
 		const query = e.target.value.toLowerCase()
-		const people = this.props.contacts.filter( person => person.name.toLowerCase().indexOf( query ) == -1 ? false : true )
+		const people = this.props.contacts.array.filter( person => person.name.toLowerCase().indexOf( query ) == -1 ? false : true )
 		this.setState( { ...this.state, searchResults: people } )
 	 }
 
