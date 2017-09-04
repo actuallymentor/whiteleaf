@@ -21,3 +21,8 @@ export const register = ( name, email, password ) => ( {
 	.then( f => app.currentUser() )
 	.catch( e => alert( e.message ) )
  } )
+
+export const restore = f => ( {
+	type: 'RESTORE',
+	payload: app.currentUser()
+} )

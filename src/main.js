@@ -16,12 +16,19 @@ import app from './modules/firebase'
 // Redux
 import { Provider } from 'react-redux'
 import store from './redux/store'
+import * as user from './redux/actions-user'
+import * as contacts from './redux/actions-contacts'
 
 // Css
 import './styles/styles.scss'
 
 
 class App extends React.Component {
+
+	componentWillMount( ) {
+		// CHeck if the user is logged in yet
+		return store.dispatch( user.restore( ) ).then( f => store.dispatch( contacts.getall(  ) ) )
+	}
 
 	// Render the main application element
 	render( ) {
@@ -51,10 +58,12 @@ class App extends React.Component {
 	}
 }
 
-if ( dev ) setTimeout( f => { 
-	document.getElementById( 'lemail' ).value = `mentor@palokaj.co`
-	document.getElementById( 'lpassword' ).value = `password`
-	document.getElementById( 'lbutton' ).click(  )
- }, 1000 )
+
+
+// if ( dev ) setTimeout( f => { 
+// 	document.getElementById( 'lemail' ).value = `mentor@palokaj.co`
+// 	document.getElementById( 'lpassword' ).value = `password`
+// 	document.getElementById( 'lbutton' ).click(  )
+//  }, 1000 )
 
 ReactDOM.render( <App />, document.getElementById('container') )

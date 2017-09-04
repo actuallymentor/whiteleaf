@@ -5,6 +5,7 @@ const userReducer = ( state = null, action ) => {
 	switch( action.type ) {
 
 		// Login/register action logic
+		case "RESTORE_FULFILLED":
 		case "LOGIN_FULFILLED":
 		case "REGISTER_FULFILLED":
 			// Payload contains the result of the firebase login promise chain

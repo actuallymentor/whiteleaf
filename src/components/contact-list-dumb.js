@@ -6,7 +6,7 @@ const now = moment()
 
 export const List = ( { user, contacts, show } ) => {
 	if ( !user ) return false
-	if ( !contacts ) return <p>You have no contacts yet!</p>
+	if ( contacts.length == 0 ) return <p className = "center">You have no contacts yet!</p>
 	
 	return <table className="table">
 				<thead>
