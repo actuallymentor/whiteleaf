@@ -78,4 +78,6 @@ class App extends React.Component {
 // 	document.getElementById( 'lbutton' ).click(  )
 //  }, 1000 )
 
+// setInterval( f => app.currentUser().then(console.log.bind(console)).catch( console.log.bind( console ) )  , 2000 )
+
 ReactDOM.render( <App />, document.getElementById('container') )
