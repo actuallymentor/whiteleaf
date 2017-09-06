@@ -2,8 +2,6 @@
 import React from 'react'
 import moment from 'moment'
 
-const now = moment()
-
 export const List = ( { user, contacts, show } ) => {
 	if ( !user ) return false
 	if ( contacts.length == 0 ) return <p className = "center">You have no contacts yet!</p>
@@ -16,13 +14,13 @@ export const List = ( { user, contacts, show } ) => {
 					</tr>
 				</thead>
 				<tbody>
-					{ contacts.map( ( contact, i ) => ( 
-						<tr key = {i}>
+					{ contacts.map( ( contact, i ) => { 
+						return <tr key = {i}>
 							<td>{ contact.name }</td>
-							<td>{ now.subtract( contact.lastmeeting, 'day' ).fromNow() }</td>
+							<td>{ moment().subtract( contact.lastmeeting, 'day' ).fromNow() }</td>
 							<td><a onClick={ show } className="mouse link" href='#' id={ contact.id }>View History</a></td>
 						</tr>
-					 ) ) }
+					 } ) }
 				</tbody>
 		   </table>
 }
