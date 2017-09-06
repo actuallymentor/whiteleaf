@@ -12,6 +12,7 @@ import config from './helpers/firebase-config'
 import * as user from './functions/firebase-userman'
 import * as contacts from './functions/firebase-contactman'
 import * as meetings from './functions/firebase-meetingman'
+import { listen } from './helpers/firebase-db'
 
 
 // ///////////////////////////////
@@ -46,6 +47,9 @@ class App {
 	getMeetingsWith( contactid ) 						  { return meetings.get( this, contactid ) }
 	updateMeeting( contactid, meetingid, newdata ) 		  { return meetings.update( this, contactid, meetingid, newdata ) }
 	destroyMeeting( contactid, meetingid ) 				  { return meetings.destroy( this, contactid, meetingid ) }
+
+	// HELPERS
+	listen( path ) { return listen( this, path ) }
 
 }
 

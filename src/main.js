@@ -14,6 +14,10 @@ import Loading from './components/loading-dumb'
 // Firebase
 import app from './modules/firebase'
 
+// Set listeners
+import * as listeners from './redux/listeners'
+listeners.contacts( app )
+
 // Redux
 import { Provider } from 'react-redux'
 import store from './redux/store'
@@ -73,11 +77,9 @@ class App extends React.Component {
 
 
 // if ( dev ) setTimeout( f => { 
-// 	document.getElementById( 'lemail' ).value = `mentor@palokaj.co`
-// 	document.getElementById( 'lpassword' ).value = `password`
+// 	document.getElementById( 'lemail' ).value = `demo@sir.co.uk`
+// 	document.getElementById( 'lpassword' ).value = `password1`
 // 	document.getElementById( 'lbutton' ).click(  )
 //  }, 1000 )
-
-// setInterval( f => app.currentUser().then(console.log.bind(console)).catch( console.log.bind( console ) )  , 2000 )
 
 ReactDOM.render( <App />, document.getElementById('container') )

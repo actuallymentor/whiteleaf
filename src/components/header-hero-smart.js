@@ -63,6 +63,7 @@ class HeaderHeroLogic extends React.Component {
 
 	 logout( ) { 
 	 	this.props.dispatch( user.logout( ) )
+	 	.then( f => this.props.dispatch( contacts.clear(  ) ) )
 	  }
 
 	render( ) { 

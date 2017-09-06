@@ -40,3 +40,11 @@ export const destroy = ( app, path ) => {
 		return app.db.ref( `users/${ user.uid }/${ path }` ).remove()
 	} )
 }
+
+// Listen on a path. This returns a listener
+export const listen = ( app, path ) => {
+	return app.currentUser().then( user => {
+		if ( dev ) console.log( `Database GET on users/${user.uid}/${path}` )
+		return app.db.ref( `users/${user.uid}/${path}` )
+	} )
+}
