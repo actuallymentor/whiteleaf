@@ -13,10 +13,11 @@ export const contacts = app => {
 		.then( transform.makeObjectMeetingsArray )
 		.then( transform.addLastMeeting )
 		.then( prettydata => {
-			store.dispatch( updateContacts( prettydata ) )
+			return store.dispatch( updateContacts( prettydata ) )
 		} )
 	} ) )
-	.catch( err => { if ( dev ) console.log( 'User not yet logged in' ) } )
+	.catch( err => { if ( dev ) console.log( 'User not yet logged in', err ) } )
 }
 
+// Meetings is updates as contacts already, but I want this file to be modular already so I need 2 exports
 export const meetings = true

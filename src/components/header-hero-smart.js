@@ -78,7 +78,7 @@ class HeaderHeroLogic extends React.Component {
 						<RegisterForm register = { this.registerSubmit } toggle = { this.toggleIntent } />
 		
 		// Render header and login form
-		return <div id = { id } className = "valign" >
+		return <div id = { id } className = "valign" style = { user ? {  } : { height: '100vh' } }>
 			<a href = "/" className = "depth" id = "identity">
 				<img
 					id = "logo"
