@@ -1,4 +1,5 @@
 import moment from 'moment'
+const now = moment()
 
 export const MakeObjAndArray = ( thecontacts ) => { 
 	// Fb results are objects like: { 'id': { name: 'Potato' }
@@ -32,14 +33,15 @@ export const makeObjectMeetingsArray = contacts => {
 }
 
 export const addLastMeeting = contacts => {
-	const now = moment()
 	contacts.array = contacts.array.map( contact => { 
 
 		// If no meetings are registered, assume the last touch point was 1 year ago
-		if ( contact.meetings.array.length == 0 ) { return { ...contact, lastmeeting: 365 } }
+		if ( contact.meetings.array.length == 0 ) { return { ...contact, lastmeeting: 365, priority: 365 } }
 
 		// Add the lastmeetingm. The ... is because .min only takes parameters but not arrays
 		contact.lastmeeting = Math.min( ...contact.meetings.array.map( meeting => now.diff( moment( meeting.date, 'DD-MM-YYYY' ), 'days' ) ) )
+		// How many days have passed since you should have contacted them?
+		contact.priority = contact.lastmeeting - contact.frequency
 		return contact
 	} )
 	return contacts

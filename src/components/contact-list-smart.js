@@ -36,8 +36,9 @@ class ContactList extends React.Component {
 	render( ) { 
 	 	const { user, contacts } = this.props
 
+	 	// The sort is reversed because we want high priority to come first
 	 	return <div>
-	 				<List user = { user } show = { this.showPerson } contacts = { contacts.array.sort( ( one, two ) => one.lastmeeting > two.lastmeeting ? 1 : -1 ) } />
+	 				<List user = { user } show = { this.showPerson } contacts = { contacts.array.sort( ( one, two ) => two.priority > one.priority ? 1 : -1 ) } />
 	 				<Person reset = { this.resetPerson } person = { this.state.theperson } />
 	 			</div>
 	  }

@@ -11,13 +11,17 @@ export const List = ( { user, contacts, show } ) => {
 					<tr>
 						<th>Person</th>
 						<th>Last meeting</th>
+						<th>Overdue</th>
 					</tr>
 				</thead>
 				<tbody>
 					{ contacts.map( ( contact, i ) => { 
+						// Don't show contacts if they are not overdue
+						if ( contact.priority < 0 ) return
 						return <tr key = {i}>
 							<td>{ contact.name }</td>
 							<td>{ moment().subtract( contact.lastmeeting, 'day' ).fromNow() }</td>
+							<td>{ contact.priority }</td>
 							<td><a onClick={ show } className="mouse link" href='#' id={ contact.id }>View History</a></td>
 						</tr>
 					 } ) }
