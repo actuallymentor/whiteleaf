@@ -46,6 +46,11 @@ body {
 }
 
 // Visibility helpers
+.nomobile {
+	@media screen and ( max-width: $mobile ) {
+		display: none;
+	}
+}
 .hide {
 	display: none;
 }

@@ -10,7 +10,7 @@ export const List = ( { user, contacts, show, showall } ) => {
 				<thead>
 					<tr>
 						<th>Person</th>
-						<th>Last meeting</th>
+						<th className = "nomobile" >Last meeting</th>
 						<th>Overdue</th>
 					</tr>
 				</thead>
@@ -20,7 +20,7 @@ export const List = ( { user, contacts, show, showall } ) => {
 						if ( contact.priority < 0 && !showall ) return
 						return <tr key = {i}>
 							<td>{ contact.name }</td>
-							<td>{ moment().subtract( contact.lastmeeting, 'day' ).fromNow() }</td>
+							<td className = "nomobile">{ moment().subtract( contact.lastmeeting, 'day' ).fromNow() }</td>
 							<td>{ contact.priority }</td>
 							<td><a onClick={ show } className="mouse link" href='#' id={ contact.id }>View History</a></td>
 						</tr>
@@ -31,26 +31,6 @@ export const List = ( { user, contacts, show, showall } ) => {
 
 export const Person = ( { person, reset } ) => {
 	if ( !person ) return false
-	const table = <table className="table">
-						<thead>
-							<tr>
-								<th>When</th>
-								<th>Where</th>
-								<th>Notes</th>
-							</tr>
-						</thead>
-
-						<tbody>
-							{ person.meetings.array.map( ( meeting, i ) => (
-								<tr key={i} >
-									<td>{meeting.date}</td>
-									<td>{meeting.location}</td>
-									<td>{meeting.notes}</td>
-								</tr>	
-							) ) }
-						</tbody>
-
-					</table>
 	const history = <div className = "timeline">
 						{ person.meetings.array.map( ( meeting, i ) => (
 								<div key={i} className="row">
