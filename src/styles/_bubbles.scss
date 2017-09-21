@@ -1,0 +1,75 @@
+/* ------------------------------------------
+
+Modified by Mentor Palokaj, from:
+
+PURE CSS SPEECH BUBBLES
+by Nicolas Gallagher
+- http://nicolasgallagher.com/pure-css-speech-bubbles/
+
+http://nicolasgallagher.com
+http://twitter.com/necolas
+
+Created: 02 March 2010
+Version: 1.2 (03 March 2011)
+
+Dual licensed under MIT and GNU GPLv2 Nicolas Gallagher
+------------------------------------------ */
+
+$triangle-size: 20px;
+
+.bubble {
+  position: relative;
+  padding: 15px;
+  color: #000;
+  background: $smooth-color;
+  border-radius: 5px;
+  p {
+       margin: 0 0 5px 0;
+  }
+  &:after {
+    content: "";
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    bottom: -15px; /* value = - border-top-width - border-bottom-width */
+    left: 50px; /* controls horizontal position */
+    border-width: 15px 15px 0; /* vary these values to change the angle of the vertex */
+    border-style: solid;
+    border-color: $smooth-color transparent;
+    /* reduce the damage in FF3.0 */
+    display: block;
+    width: 0;
+  }
+  &.left {
+    margin-left: $triangle-size;
+    background: $smooth-color;
+    &:after {
+      left: -$triangle-size; /* value = - border-left-width - border-right-width */
+      bottom: auto;
+      border-width: 10px $triangle-size 10px 0;
+      border-color: transparent $smooth-color;
+    }
+  }
+  &.right {
+    margin-right: $triangle-size;
+    background: $smooth-color;
+    &:after {
+      right: -$triangle-size; /* value = - border-left-width - border-right-width */
+      bottom: auto;
+      left: auto;
+      border-width: 10px 0 10px $triangle-size;
+      border-color: transparent $smooth-color;
+    }
+  }
+}
+
+@media screen and ( max-width: $tablet ) {
+  .bubble {
+    &:after {
+      display: none;
+    }
+    &.right, &.left {
+      margin: 0;
+    }
+  }
+}

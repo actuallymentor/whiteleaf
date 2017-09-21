@@ -38,3 +38,32 @@ h1 {
 p {
 	@include font-size($p-font-sizes);
 }
+
+.link { 
+	color: $accent-color;
+	&:hover { 
+		text-decoration: underline;
+	 }
+ }
+
+.mouse {
+	cursor: pointer;
+	text-decoration: none!important;
+	@extend .depth;
+}
+
+.white {
+	color: white;
+}
+
+.center {
+	text-align: center;
+	&::placeholder { 
+		text-align: center;
+	 }
+}
+
+.subtitle {
+	font-size: 0.8em;
+    font-style: italic;
+}

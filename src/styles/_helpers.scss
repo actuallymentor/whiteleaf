@@ -76,7 +76,7 @@ body {
 .depth {
 	transition: $hover-speed;
 	&:hover {
-		@include hover-txt ( $hover-speed ) opacity: 0.8;
+		@include hover-txt ( $hover-speed );
 	}
 }
 
@@ -99,33 +99,10 @@ body {
 }
 
 // Styling helpers
-.white {
-	color: white;
-}
-
-.center {
-	text-align: center;
-	&::placeholder { 
-		text-align: center;
-	 }
-}
-
 .nomar {
 	margin: 0;
 }
 
-.link { 
-	color: $accent-color;
-	&:hover { 
-		text-decoration: underline;
-	 }
- }
-
-.mouse {
-	cursor: pointer;
-	text-decoration: none!important;
-	@extend .depth;
-}
 
 .ripple {
 	position: relative;
@@ -238,8 +215,15 @@ body {
 .modal { 
 	background: white;
 	padding: 50px 30px;
+	max-height: 90%;
+	box-sizing: border-box;
+	overflow: scroll;
 	width: 750px;
-    max-width: 100vw;
+    max-width: 95%;
+    @media screen and ( max-width: $tablet ) {
+    	position: absolute;
+    	top: 5px;
+    }
 	.modalform { 
 		input {
 			background: $smooth-color;
@@ -261,3 +245,19 @@ body {
 		 }
 	 }
  }
+
+.timeline {
+	h2 {
+		margin-top: 0;
+	}
+	background: linear-gradient(
+		to right, 
+	    transparent 0%, 
+	    transparent calc(50% - 0.81px), 
+	    $accent-color calc(50% - 0.8px), 
+	    $accent-color calc(50% + 0.8px), 
+	    transparent calc(50% + 0.81px), 
+	    transparent 100%
+    );
+    margin: 30px;
+}

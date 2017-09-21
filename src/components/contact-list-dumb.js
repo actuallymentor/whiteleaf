@@ -2,7 +2,7 @@
 import React from 'react'
 import moment from 'moment'
 
-export const List = ( { user, contacts, show } ) => {
+export const List = ( { user, contacts, show, showall } ) => {
 	if ( !user ) return false
 	if ( contacts.length == 0 ) return <p className = "center">You have no contacts yet!</p>
 	
@@ -17,7 +17,7 @@ export const List = ( { user, contacts, show } ) => {
 				<tbody>
 					{ contacts.map( ( contact, i ) => { 
 						// Don't show contacts if they are not overdue
-						if ( contact.priority < 0 ) return
+						if ( contact.priority < 0 && !showall ) return
 						return <tr key = {i}>
 							<td>{ contact.name }</td>
 							<td>{ moment().subtract( contact.lastmeeting, 'day' ).fromNow() }</td>
@@ -51,10 +51,22 @@ export const Person = ( { person, reset } ) => {
 						</tbody>
 
 					</table>
+	const history = <div className = "timeline">
+						{ person.meetings.array.map( ( meeting, i ) => (
+								<div key={i} className="row">
+									<div className = { `col s12 m6 l6 ${ i % 2 == 0 ? 0 : 'offset-m6 offset-l6' }` } >
+										<div className = { `bubble ${ i % 2 == 0 ? 'right' : 'left' }` }>
+										 <p>{meeting.notes}</p>
+										 <span className = "subtitle">{ `${meeting.date}, ${meeting.location}` }</span>
+										 </div>
+									</div>
+								</div>	
+							) ) }
+					</div>
 	return <div id="persontable" className="backdrop">
 				<div className = 'modal col l6 m12 s12 center'>
 					<h2>Your history with { person.name }</h2>
-					{ person.meetings.array.length == 0 ? <p>You have no history, ha!</p> : table }
+					{ person.meetings.array.length == 0 ? <p>You have no history, ha!</p> : history }
 					<a className="closebtn mouse link" href="#" onClick = { reset } > Close </a>
 				</div>
 			</div>

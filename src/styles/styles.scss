@@ -7,12 +7,12 @@ $menu-background: $accent-color;
 // Animations
 $menu-transition-speed: 0.5s;
 $hover-speed: 0.3s;
-@mixin hover-txt ( $speed) {
+@mixin hover-txt ( $speed ) {
 	transition: $speed;
-	text-shadow: 0 8px 5px rgba(0, 0, 0, 0.3);
+	text-shadow: 0 6px 6px rgba(0, 0, 0, 0.2);
 }
 
-@mixin hover-element ( $speed) {
+@mixin hover-element ( $speed ) {
 	transition: $speed;
 	box-shadow: 4px 4px 5px 1px rgba(0, 0, 0, 0.3);
 }
@@ -61,6 +61,9 @@ body {
 
 /* Data display stuff */
 @import "datadisplay";
+
+/* Import bubbles */
+@import "bubbles";
 
 // Menu styles
 #menu {
