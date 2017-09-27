@@ -1,7 +1,14 @@
 import moment from 'moment'
 const now = moment()
 
-export const MakeObjAndArray = ( thecontacts ) => { 
+export const addIdToObj = ( thecontacts ) => { 
+	for( let id in thecontacts ) { 
+		thecontacts[ id ].id = id
+	 }
+	 return thecontacts
+ }
+
+export const makeObjAndArray = ( thecontacts ) => { 
 	// Fb results are objects like: { 'id': { name: 'Potato' }
 
 	// Make the results array
@@ -14,7 +21,7 @@ export const MakeObjAndArray = ( thecontacts ) => {
 export const makeArrayMeetingsArray = contacts => {
 	if ( !contacts ) return contacts
 	contacts.array = contacts.array.map( contact => {
-		contact.meetings = MakeObjAndArray( contact.meetings )
+		contact.meetings = makeObjAndArray( contact.meetings )
 		return contact
 	} )
 	return contacts
@@ -27,7 +34,7 @@ export const makeObjectMeetingsArray = contacts => {
 		// Empty the meetings key
 		contacts.object[id].meetings = {}
 		if ( !oldmeetings ) contacts.object[id].meetings = { array: [], object: {} }
-		contacts.object[id].meetings = MakeObjAndArray( oldmeetings )
+		contacts.object[id].meetings = makeObjAndArray( oldmeetings )
 	}
 	return contacts
 }
