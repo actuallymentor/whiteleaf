@@ -28,8 +28,8 @@ class ContactList extends React.Component {
 
 	showPerson( e ) {
 		e.preventDefault( )
-		const showingperson = this.props.contacts.object[e.target.id]
-		this.setState( { ...this.state, showingperson: showingperson } )
+		// const showingperson = this.props.contacts.object[e.target.id]
+		this.setState( { ...this.state, showingperson: e.target.id } )
 	}
 
 	resetPerson( e ) {
@@ -63,7 +63,7 @@ class ContactList extends React.Component {
 	 	return <div>
 	 				<List showall = { this.state.showall } user = { user } show = { this.showPerson } contacts = { contacts.array.sort( ( one, two ) => two.priority > one.priority ? 1 : -1 ) } />
 	 				<p className="mouse link center" onClick = { this.showAllToggle }>Show { this.state.showall ? 'overdue only' : 'all contacts' }</p>
-	 				<Person toggle = { this.toggleEditPerson } editing = { this.state.editingperson } save = { this.savePerson } reset = { this.resetPerson } person = { this.state.showingperson } />
+	 				<Person toggle = { this.toggleEditPerson } editing = { this.state.editingperson } save = { this.savePerson } reset = { this.resetPerson } person = { this.props.contacts.object[this.state.showingperson] } />
 	 			</div>
 	  }
 }

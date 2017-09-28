@@ -51,13 +51,20 @@ export const Person = ( { editing, toggle, save, person, reset } ) => {
 					<form onSubmit = { save } className = { editing ? 'col s12 m12 l12' : 'hide' }>
 						<div className = "row">
 							<input type='text' name='id' defaultValue= { person.id } hidden />
-							<input className = '' type='text' name='name' placeholder = { person.name } />
-							<input className = '' type='text' name='bio' placeholder = { person.bio } />
-							<input className = '' type='number' name='frequency' placeholder = { person.frequency } />
+							<div className = "col m4 s12">
+								<input className = 'col s12' type='text' name='name' placeholder = { `Name: ${ person.name }` } />
+							</div>
+							<div className = "col m4 s12">
+								<input className = 'col s12' type='text' name='bio' placeholder = { `Bio: ${ person.bio }` } />
+							</div>
+							<div className = "col m4 s12">
+								<input className = 'col s12' type='number' name='frequency' placeholder = { `Contact frequency: ${ person.frequency }` } />
+							</div>
+							<div className = "col m6 offset-m3 s10 offset-s1">
+								<input id="closeedit" className = 'col s12 link mouse' type='submit' value='Save Canges' />
+							</div>
 						</div>
-						<div className = "row">
-							<input className = '' type='submit' value='save' />
-						</div>
+
 					</form>
 					<p className= { editing ? 'hide' : 'mouse link' }  onClick = { toggle } >Edit this person</p>
 					{ person.meetings.array.length == 0 ? <p>You have no history, ha!</p> : history }
