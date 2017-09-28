@@ -15,7 +15,7 @@ const contactsReducer = ( state = { array: [], object: {} }, action ) => {
 		break
 
 		case 'CLEAR_FULFILLED':
-			return null
+			return { array: [], object: {} }
 		break
 		
 		default:
