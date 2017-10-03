@@ -225,10 +225,6 @@ body {
 	overflow: scroll;
 	width: 750px;
     max-width: 95%;
-    @media screen and ( max-width: $tablet ) {
-    	position: absolute;
-    	top: 5px;
-    }
 	.modalform { 
 		input {
 			background: $smooth-color;

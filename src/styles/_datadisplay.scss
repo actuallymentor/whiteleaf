@@ -11,6 +11,12 @@
 	h2 {
 		margin: 0;
 	}
+	.modal {
+	    @media screen and ( max-width: $tablet ) {
+	    	position: absolute;
+	    	top: 5px;
+	    }
+	}
 }
 
 #closebtn {
