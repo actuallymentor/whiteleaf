@@ -2,6 +2,7 @@
 import React from 'react'
 import moment from 'moment'
 
+// List the friends overdue for a meeting on the front page ( and allow toggles )
 export const List = ( { user, contacts, show, showall } ) => {
 	if ( !user ) return false
 	if ( contacts.length == 0 ) return <p className = "center">You have no contacts yet!</p>
@@ -29,6 +30,7 @@ export const List = ( { user, contacts, show, showall } ) => {
 		   </table>
 }
 
+// Modal for displaying the timeline of a friend ( and editing their info )
 export const Person = ( { editing, toggle, save, person, reset } ) => {
 	if ( !person ) return false
 	console.log( 'Rendered person view' )

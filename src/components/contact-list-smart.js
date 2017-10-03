@@ -26,21 +26,25 @@ class ContactList extends React.Component {
 		this.toggleEditPerson = this.toggleEditPerson.bind( this )
 	}
 
+
+	// Setting the id of the person we're interacting with in the state
 	showPerson( e ) {
 		e.preventDefault( )
-		// const showingperson = this.props.contacts.object[e.target.id]
 		this.setState( { ...this.state, showingperson: e.target.id } )
 	}
 
+	// Clear person id in the state
 	resetPerson( e ) {
 		e.preventDefault( )
 		this.setState( { ...this.state, showingperson: false } )
 	}
 
+	// Toggle whether or not we are currently editing the person we are viewing
 	toggleEditPerson( e ) { 
 		this.state.editingperson ? this.setState( { ...this.state, editingperson: false } ) : this.setState( { ...this.state, editingperson: true } )
 	 }
 
+	// Save the new person details we put in the editable fields
 	savePerson( e ) { 
 		e.preventDefault(  )
 		const { id, name, bio, frequency } = e.target
@@ -52,6 +56,7 @@ class ContactList extends React.Component {
 		this.toggleEditPerson(  )
 	 }
 
+	// Whether only to show overdue of all contacts on the main page
 	showAllToggle( ) {
 		this.state.showall ? this.setState( { ...this.state, showall: false } ) : this.setState( { ...this.state, showall: true } )
 	}
@@ -68,6 +73,7 @@ class ContactList extends React.Component {
 	  }
 }
 
+// Connect the relevant redux data to this component. Contacts can be quite big since it includes meeting data
 export default connect( store => ( { 
 	user: store.user ? true : false,
 	contacts: store.contacts

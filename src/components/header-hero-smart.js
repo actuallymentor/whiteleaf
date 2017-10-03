@@ -25,15 +25,18 @@ class HeaderHeroLogic extends React.Component {
 		this.logout = this.logout.bind( this )
 	 }
 
+	// Super mega sophisticated loading animation ( css )
 	 setLoading( value ) { 
 	 	return Promise.resolve( this.setState( { ...this.state, loading: value } ) )
 	 }
 
-	 toggleIntent( ) { 
+	// Toggle interface between register or login
+	toggleIntent( ) { 
 	 	let intent = this.state.action == 'login' ? 'register' : 'login'
 	 	this.setState( { ...this.state, action: intent } )
 	  }
 
+	 // Submit login form handler
 	loginSubmit ( e ) { 
 		e.preventDefault( )
 
@@ -43,6 +46,7 @@ class HeaderHeroLogic extends React.Component {
 		console.log( 'logging in with', email, password )
 
 		if ( !email || !password ) return alert( 'Invalid email or password.' )
+		// Log in, animate, grab contacts, unanimate loading
 		this.setLoading( 'Logging in' )
 		.then( f => this.props.dispatch( user.login( email, password ) ) )
 		.then( f => this.props.dispatch( contacts.getall() ) )
@@ -50,7 +54,8 @@ class HeaderHeroLogic extends React.Component {
 		.catch( f => this.setLoading( false ) )
 	 }
 
-	 registerSubmit ( e ) { 
+	// Registration logic
+	registerSubmit ( e ) { 
 		e.preventDefault( )
 		
 		const email = e.target.remail.value
@@ -61,11 +66,12 @@ class HeaderHeroLogic extends React.Component {
 		this.props.dispatch( user.register( name, email, password ) )
 	 }
 
-	 logout( ) { 
+	logout( ) { 
 	 	this.props.dispatch( user.logout( ) )
 	 	.then( f => this.props.dispatch( contacts.clear(  ) ) )
 	  }
 
+	 // Show the login / registration form
 	render( ) { 
 
 		if ( this.state.loading ) return <Loading message = { this.state.loading } />

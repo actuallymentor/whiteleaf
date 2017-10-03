@@ -1,5 +1,6 @@
 import React from 'react'
 
+// Non stylesheet styles for the toggle text
 const small = { 
 	fontSize: '15px',
 	opacity: '0.7'
@@ -16,6 +17,7 @@ export const LoginForm = ( { login, toggle } ) => {
 			</form>
  }
 
+// Stateless registration form
 export const RegisterForm = ( { register, toggle } ) => { 
  	return <form className="center" id="registerform" onSubmit = { register } >
  				<input id="rname" type="text" placeholder="name" required />

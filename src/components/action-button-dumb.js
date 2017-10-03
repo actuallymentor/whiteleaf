@@ -5,6 +5,7 @@ import React from 'react'
 const date = new Date( Date.now( ) )
 const today = `${date.getDate( )}-${date.getMonth( ) +1}-${date.getFullYear( )}`
 
+// The action button used to trigger data entries
 export const Button = ( { addContact, addMeeting, user } ) => {
 	if ( !user ) return false
 	return  <div className = 'actioncontainer'>
@@ -22,6 +23,7 @@ export const Button = ( { addContact, addMeeting, user } ) => {
 			</div> 
  }
 
+// The popup managing the adding of a new contact
 export const AddContact = ( { handleSubmit, adding, clearModals } ) => { 
 	if ( !adding ) return false
 	return <div className = 'backdrop' onClick = { clearModals } >
@@ -49,12 +51,18 @@ export const AddContact = ( { handleSubmit, adding, clearModals } ) => {
 		   </div>
  }
 
+
+// The popup managing the addition of a meeting to existing contacts
 export const AddMeeting = ( { selectUser, meetingFriend, searchResults, findUser, handleSubmit, adding, clearModals } ) => { 
 	if ( !adding ) return false
 
+	// If a search was made, show the results
 	const visibleResults = searchResults ? <ul className="searchdrop col s12 m12 l12"> { searchResults.map( result => <li onClick={ selectUser } key={ result.id } id={ result.id }> { result.name } </li> ) } </ul> : false
+	// If no friend was relected, show a search bar
 	const searchBar = meetingFriend.id ? false : <input onChange = { findUser } className="col s12 m12 l12 center" name="search" type="text" placeholder="Rose Tyler" />
+	// Show the name of the selected contact
 	const selectedFriend = meetingFriend.id ? <div className="mouse">{ meetingFriend.name }</div> : false
+	// The table with the relevant input fields
 	const meetingData = <div>
 							<div className="input col l6 m6 s12">
 								<div className="label">When did you talk? (dd-mm-yyyy)</div>

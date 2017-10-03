@@ -20,6 +20,7 @@ class ActionButton extends React.Component {
 		this.state = { 
 			addingContact: false,
 			addingMeeting: false,
+			// The friend you are meeting, undefined means none is selected
 			meetingFriend: { 
 				id: undefined,
 				name: undefined
@@ -35,6 +36,7 @@ class ActionButton extends React.Component {
 		this.selectUser = this.selectUser.bind( this )
 	}
 
+	// Toggle functions that switch the interface between 
 	toggleAddContact(  ) { 
 		this.setState( { ...this.state, addingContact: this.state.addingContact ? false : true } )
 	}
@@ -47,6 +49,7 @@ class ActionButton extends React.Component {
 		this.setState( { ...this.state, addingContact: false, addingMeeting: false } )
 	 }
 
+	// Functions used for submitting data to the firebase db
 	submitContact( e ) { 
 		e.preventDefault( )
 		const { name, bio, email, frequency } = e.target
@@ -63,12 +66,14 @@ class ActionButton extends React.Component {
 		this.clearModals( )
 	}
 
+	// Search function for looping through friends to find one that matches the query
 	findUser( e ) { 
 		const query = e.target.value.toLowerCase()
 		const people = this.props.contacts.array.filter( person => person.name.toLowerCase().indexOf( query ) == -1 ? false : true )
 		this.setState( { ...this.state, searchResults: people } )
 	 }
 
+	// Set the friend the meeting is with ( onclicker )
 	selectUser( e ) { 
 		const id = e.target.id
 		const name = e.target.innerText
