@@ -3,7 +3,10 @@
 // ///////////////////////////////
 
 // Import firebase elements we need
-import firebase from 'firebase'
+import * as firebase from 'firebase/app'
+import 'firebase/auth'
+import 'firebase/database'
+
 import config from './helpers/firebase-config'
 
 // ///////////////////////////////
