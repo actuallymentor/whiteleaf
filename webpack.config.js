@@ -3,6 +3,7 @@ let autoprefixer = require ( 'autoprefixer' )
 let webpack = require( 'webpack' )
 const bs = require( 'browser-sync' )
 const ip = require( 'ip' )
+const MinifyPlugin = require( "babel-minify-webpack-plugin" )
 
 // ///////////////////////////////
 // Plugins
@@ -51,7 +52,7 @@ const stringify_env = f => {
 }
 
 const plugins = process.env.NODE_ENV == 'production' ?
-  [ new webpack.optimize.UglifyJsPlugin( { compress: { warnings: false }, sourceMap: true } ),
+  [ new MinifyPlugin( ),
     new webpack.DefinePlugin( { 'process.env': { NODE_ENV: JSON.stringify( 'production' ) } } )
   ]
   :
