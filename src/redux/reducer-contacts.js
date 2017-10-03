@@ -6,7 +6,7 @@ const contactsReducer = ( state = { array: [], object: {} }, action ) => {
 
 		case 'UPDATE_FULFILLED':
 		case 'GETALL_FULFILLED':
-			// action.payload is an array resulting from a transformed firebase call
+			// action.payload is an array of contacts resulting from a transformed firebase call
 			return action.payload ? action.payload : state
 		break
 
@@ -15,7 +15,7 @@ const contactsReducer = ( state = { array: [], object: {} }, action ) => {
 		break
 
 		case 'CLEAR_FULFILLED':
-			return null
+			return { array: [], object: {} }
 		break
 		
 		default:

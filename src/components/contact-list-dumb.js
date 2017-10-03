@@ -22,15 +22,16 @@ export const List = ( { user, contacts, show, showall } ) => {
 							<td>{ contact.name }</td>
 							<td className = "nomobile">{ moment().subtract( contact.lastmeeting, 'day' ).fromNow() }</td>
 							<td>{ contact.priority }</td>
-							<td><a onClick={ show } className="mouse link" href='#' id={ contact.id }>View History</a></td>
+							<td><a onClick={ show } className="mouse link" href='#' id={ contact.id }>View</a></td>
 						</tr>
 					 } ) }
 				</tbody>
 		   </table>
 }
 
-export const Person = ( { person, reset } ) => {
+export const Person = ( { editing, toggle, save, person, reset } ) => {
 	if ( !person ) return false
+	console.log( 'Rendered person view' )
 	const history = <div className = "timeline">
 						{ person.meetings.array.map( ( meeting, i ) => (
 								<div key={i} className="row">
@@ -46,6 +47,26 @@ export const Person = ( { person, reset } ) => {
 	return <div id="persontable" className="backdrop">
 				<div className = 'modal col l6 m12 s12 center'>
 					<h2>Your history with { person.name }</h2>
+					<p>Bio: { person.bio }{ person.bio[ person.bio.length -1 ] == '.' ? '' : '.' } You contact them every { person.frequency } days</p>
+					<form onSubmit = { save } className = { editing ? 'col s12 m12 l12' : 'hide' }>
+						<div className = "row">
+							<input type='text' name='id' defaultValue= { person.id } hidden />
+							<div className = "col m4 s12">
+								<input className = 'col s12' type='text' name='name' placeholder = { `Name: ${ person.name }` } />
+							</div>
+							<div className = "col m4 s12">
+								<input className = 'col s12' type='text' name='bio' placeholder = { `Bio: ${ person.bio }` } />
+							</div>
+							<div className = "col m4 s12">
+								<input className = 'col s12' type='number' name='frequency' placeholder = { `Contact frequency: ${ person.frequency }` } />
+							</div>
+							<div className = "col m6 offset-m3 s10 offset-s1">
+								<input id="closeedit" className = 'col s12 link mouse' type='submit' value='Save Canges' />
+							</div>
+						</div>
+
+					</form>
+					<p className= { editing ? 'hide' : 'mouse link' }  onClick = { toggle } >Edit this person</p>
 					{ person.meetings.array.length == 0 ? <p>You have no history, ha!</p> : history }
 					<a className="closebtn mouse link" href="#" onClick = { reset } > Close </a>
 				</div>

@@ -76,10 +76,10 @@ class App extends React.Component {
 
 
 
-if ( dev ) setTimeout( f => { 
-	document.getElementById( 'lemail' ).value = `demo@sir.co.uk`
-	document.getElementById( 'lpassword' ).value = `password1`
-	document.getElementById( 'lbutton' ).click(  )
- }, 1000 )
+// if ( dev ) setTimeout( f => { 
+// 	document.getElementById( 'lemail' ).value = `demo@sir.co.uk`
+// 	document.getElementById( 'lpassword' ).value = `password1`
+// 	document.getElementById( 'lbutton' ).click(  )
+//  }, 1000 )
 
 ReactDOM.render( <App />, document.getElementById('container') )

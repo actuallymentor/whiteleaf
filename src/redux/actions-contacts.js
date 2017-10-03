@@ -10,6 +10,11 @@ export const update = values => ( {
 	payload: Promise.resolve( values )
 } )
 
+export const savechanges = ( id, values ) => ( {
+	type: 'UPDATE',
+	payload: app.updateContact( id, values )
+} )
+
 export const addcontact = ( name, bio, email, frequency ) => ( { 
 	type: 'ADDONE',
 	payload: app.addContact( name, bio, email, frequency )

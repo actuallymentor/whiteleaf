@@ -7,8 +7,9 @@ import * as transform from '../modules/helpers/data-transformations'
 export const contacts = app => {
 	return app.listen( 'contacts' )
 	.then( listener => listener.on( 'value', snapshot => {
-		Promise.resolve( snapshot.val( ) )
-		.then( transform.MakeObjAndArray )
+		return Promise.resolve( snapshot.val( ) )
+		.then( transform.addIdToObj )
+		.then( transform.makeObjAndArray )
 		.then( transform.makeArrayMeetingsArray )
 		.then( transform.makeObjectMeetingsArray )
 		.then( transform.addLastMeeting )

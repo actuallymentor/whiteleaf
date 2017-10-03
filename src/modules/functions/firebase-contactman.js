@@ -18,7 +18,8 @@ export const get = ( app ) => {
 	
 	// Read a node
 	return db.read( app, `contacts` )
-	.then( transform.MakeObjAndArray )
+	.then( transform.addIdToObj )
+	.then( transform.makeObjAndArray )
 	.then( transform.makeArrayMeetingsArray )
 	.then( transform.makeObjectMeetingsArray )
 	.then( transform.addLastMeeting )
