@@ -69,7 +69,7 @@ export const Person = ( { editing, toggle, save, person, reset } ) => {
 
 					</form>
 					<p className= { editing ? 'hide' : 'mouse link' }  onClick = { toggle } >Edit this person</p>
-					{ person.meetings.array.length == 0 ? <p>You have no history, ha!</p> : history }
+					{ person.meetings.array.length == 0 ? <p>You have no recorded history.</p> : history }
 					<a className="closebtn mouse link" href="#" onClick = { reset } > Close </a>
 				</div>
 			</div>
