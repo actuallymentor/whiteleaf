@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "whiteleaf-production"
+    "development": "whiteleaf-8762b",
+    "production": "whiteleaf-production"
   }
 }
