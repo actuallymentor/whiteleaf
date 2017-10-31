@@ -18,7 +18,8 @@
     "start": "git pull && NODE_ENV=development webpack --progress -d --watch",
     "test": "for file in ./test/*.js \n do \n mocha --timeout 10000 --compilers js:babel-core/register $file \n done ",
     "build": "NODE_ENV=production webpack --progress",
-    "deploy": "npm run build && firebase deploy" 
+    "dep-dev": "npm run build && firebase deploy --project development",
+    "dep-prod": "npm run build && firebase deploy --project production" 
   },
   "repository": "actuallymentor/react-frontend-boilerplate",
   "author": {
