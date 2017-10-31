@@ -7,7 +7,7 @@ export const getall = f => ( {
 
 export const update = values => ( {
 	type: 'UPDATE',
-	payload: Promise.resolve( values )
+	payload: Promise.resolve( values ).then( f => app.getContacts(  ) )
 } )
 
 export const savechanges = ( id, values ) => ( {
@@ -17,7 +17,7 @@ export const savechanges = ( id, values ) => ( {
 
 export const addcontact = ( name, bio, email, frequency ) => ( { 
 	type: 'ADDONE',
-	payload: app.addContact( name, bio, email, frequency )
+	payload: app.addContact( name, bio, email, frequency ).then( f => app.getContacts( ) )
  } )
 
 export const clear = f => ( {

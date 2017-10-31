@@ -19,6 +19,7 @@ class ContactList extends React.Component {
 			showall: false,
 			editingperson: false
 		}
+		this.currentperson = this.currentperson.bind( this )
 		this.showPerson = this.showPerson.bind( this )
 		this.resetPerson = this.resetPerson.bind( this )
 		this.showAllToggle = this.showAllToggle.bind( this )
@@ -56,6 +57,11 @@ class ContactList extends React.Component {
 		this.toggleEditPerson(  )
 	 }
 
+	 currentperson( ) {
+	 	if ( this.state.showingperson) return this.props.contacts.object[this.state.showingperson]
+	 	return false
+	 }
+
 	// Whether only to show overdue of all contacts on the main page
 	showAllToggle( ) {
 		this.state.showall ? this.setState( { ...this.state, showall: false } ) : this.setState( { ...this.state, showall: true } )
@@ -65,12 +71,20 @@ class ContactList extends React.Component {
 	 	const { user, contacts } = this.props
 
 	 	// The sort is reversed because we want high priority to come first
+<<<<<<< HEAD
 	 	const list =    <main><div className="container"><section><div>
 			 				<List showall = { this.state.showall } user = { user } show = { this.showPerson } contacts = { contacts.array.sort( ( one, two ) => two.priority > one.priority ? 1 : -1 ) } />
 			 				<p className="mouse link center" onClick = { this.showAllToggle }>Show { this.state.showall ? 'overdue only' : 'all contacts' }</p>
 			 				<Person toggle = { this.toggleEditPerson } editing = { this.state.editingperson } save = { this.savePerson } reset = { this.resetPerson } person = { this.props.contacts.object[this.state.showingperson] } />
 			 			</div></section></div></main>
 		return user ? list : false
+=======
+	 	return <div>
+	 				<List showall = { this.state.showall } user = { user } show = { this.showPerson } contacts = { contacts.array.sort( ( one, two ) => two.priority > one.priority ? 1 : -1 ) } />
+	 				<p className="mouse link center" onClick = { this.showAllToggle }>Show { this.state.showall ? 'overdue only' : 'all contacts' }</p>
+	 				<Person toggle = { this.toggleEditPerson } editing = { this.state.editingperson } save = { this.savePerson } reset = { this.resetPerson } person = { this.currentperson( ) } />
+	 			</div>
+>>>>>>> development
 	  }
 }
 
