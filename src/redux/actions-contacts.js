@@ -12,7 +12,7 @@ export const update = values => ( {
 
 export const savechanges = ( id, values ) => ( {
 	type: 'UPDATE',
-	payload: app.updateContact( id, values )
+	payload: app.updateContact( id, values ).then( f => app.getContacts(  ) )
 } )
 
 export const addcontact = ( name, bio, email, frequency ) => ( { 

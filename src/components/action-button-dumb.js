@@ -14,11 +14,11 @@ export const Button = ( { addContact, addMeeting, user } ) => {
 				</div>
 				<div onClick = { addContact } className = 'intentbtn'>
 					<span className = 'icon ripple' > f </span>
-					<span className = 'actionlabel'> add a friend </span>
+					<span className = 'actionlabel'> add friend </span>
 				</div>
 				<div onClick = { addMeeting } className = 'intentbtn'>
-					<span className = 'icon ripple' > m </span>
-					<span className = 'actionlabel'> record a meeting </span>
+					<span className = 'icon ripple' > t </span>
+					<span className = 'actionlabel'> add touchpoint </span>
 				</div>
 			</div> 
  }
