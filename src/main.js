@@ -59,13 +59,7 @@ class App extends React.Component {
 							logo	 = ""
 						/>
 					</header>
-					<main>
-						<div className="container">
-							<section>
-								<ContactList />
-							</section>
-						</div>
-					</main>
+					<ContactList />
 					<ActionButton />
 					<Footer owner = "Mentor Palokaj" />
 				</div>
