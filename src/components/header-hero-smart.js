@@ -96,7 +96,7 @@ class HeaderHeroLogic extends React.Component {
 				Hello { user ? `${ user.name || user.email }!` : 'Stranger!' }
 			</h1>
 			<p id = "subtitle" >
-				{ user ? `Welcome back you delightful person you.` : 'You should log in.'  }
+				{ user ? `Welcome back you delightful person you.` : 'You should log in. Note: this is a super-mega beta release.'  }
 			</p>
 
 			{ user ? <span onClick = { this.logout } className="mouse link">Logout</span> : form }
