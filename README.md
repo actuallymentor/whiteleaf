@@ -10,7 +10,7 @@ Based on a fork of this [react frontend boilerplate](https://github.com/actually
 - Desire: use firebase, react & redux in concert with eachother
 - Goals: CRM manager for friends
 
-Outcome: (Whiteleaf)[https://whiteleaf.io]
+Outcome: [Whiteleaf](https://whiteleaf.io)
 
 Todo:
 
