@@ -6,17 +6,20 @@
 
 Based on a fork of this [react frontend boilerplate](https://github.com/actuallymentor/react-frontend-boilerplate).
 
+- Problem: I forget what friends I haven't been in touch with
+- Desire: use firebase, react & redux in concert with eachother
+- Goals: CRM manager for friends
+
+Outcome: (Whiteleaf)[https://whiteleaf.io]
+
 Todo:
 
-- firebase
-    + ~~crud user api~~
-    + ~~crud contacts api~~
-    + ~~crud meeting api~~
-    + import google contacts
-- Interface
-    + register
-    + login
-    + register
-    + search contacts
-    + crud contacts
-    + crud contact meeting
+- Go nuts on documentation
+- Make all the code pretty
+- Consider frontend tests usign Jest
+
+Desired upgrades:
+
+- Import google contacts
+- Email notifications
+- React native app version
