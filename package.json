@@ -16,10 +16,9 @@
   },
   "scripts": {
     "start": "git pull && NODE_ENV=development webpack --progress -d --watch",
-    "test": "for file in ./test/*.js \n do \n mocha --timeout 10000 --compilers js:babel-core/register $file \n done ",
     "build": "NODE_ENV=production webpack --progress",
     "dep-dev": "npm run build && firebase deploy --project development",
-    "dep-prod": "npm run build && firebase deploy --project production" 
+    "dep-prod": "npm run build && firebase deploy --project production"
   },
   "repository": "actuallymentor/react-frontend-boilerplate",
   "author": {
@@ -48,7 +47,6 @@
     "dotenv": "^4.0.0",
     "firebase": "^4.2.0",
     "ip": "^1.1.5",
-    "mocha": "^3.5.0",
     "moment": "^2.18.1",
     "ncp": "^2.0.0",
     "node-sass": "^4.5.3",
@@ -66,6 +64,6 @@
     "xmlhttprequest": "^1.8.0"
   },
   "devDependencies": {
-    "babel-minify-webpack-plugin": "^0.2.0"
+    "babel-minify-webpack-plugin": "^0.2.0",
   }
 }
