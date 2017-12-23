@@ -60,7 +60,8 @@ class ActionButton extends React.Component {
 	submitMeeting( e ) { 
 		e.preventDefault( )
 		const { date, location, notes, contactid } = e.target
-		if ( !moment( date, 'DD-MM-YYY' ).isValid ) return alert( 'This is not a valid date! Please use the sensical DD-MM-YYY format.' )
+		date.value = date.value.replace( /\//g, '-' )
+		if ( !( /^([0-9]{1,2})\-([0-3][0-9])\-([0-2][0-9]{3})/.test( date.value ) ) ) return alert( 'Your date is not valid. Please use dd-mm-yyy.' )
 		console.log( contactid, date, location, notes )
 		this.props.dispatch( meetings.add( contactid.value, date.value, location.value, notes.value ) )
 		this.clearModals( )
