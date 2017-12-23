@@ -10,3 +10,8 @@ export const get = ( contactid ) => ( {
 	// COntact firebase and try to log in. If ann goes well, return the current user.
 	payload: app
  } )
+
+export const destroy = ( contactid, meetingid ) => ( { 
+	type: 'DESTROY',
+	payload: app.destroyMeeting( contactid, meetingid ).catch( e => alert( `Meeting not deleted. ${ e }` ) )
+ } )

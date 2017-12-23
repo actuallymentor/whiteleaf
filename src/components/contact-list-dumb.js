@@ -31,7 +31,11 @@ export const List = ( { user, contacts, show, showall } ) => {
 }
 
 // Modal for displaying the timeline of a friend ( and editing their info )
-export const Person = ( { editing, toggle, save, person, reset } ) => {
+const deletebutton = { 
+	"marginTop": 10
+ }
+
+export const Person = ( { editing, toggle, save, person, reset, deletemeet } ) => {
 	if ( !person ) return false
 	console.log( 'Rendered person view' )
 	const history = <div className = "timeline">
@@ -41,6 +45,8 @@ export const Person = ( { editing, toggle, save, person, reset } ) => {
 										<div className = { `bubble ${ i % 2 == 0 ? 'right' : 'left' }` }>
 										 <p>{meeting.notes}</p>
 										 <span className = "subtitle">{ `${meeting.date}, ${meeting.location}` }</span>
+										 <br />
+										 <input style = { deletebutton } type = "submit" value = "Delete" onClick =  { e => deletemeet( e, meeting.id, person.id ) } className = "mouse link" />
 										 </div>
 									</div>
 								</div>	
