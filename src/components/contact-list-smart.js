@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 // Redux connector
 import { connect } from 'react-redux'
 import * as contacts from '../redux/actions-contacts'
+import * as meetings from '../redux/actions-meetings'
 
 // Dumb components
 import { List, Person } from './contact-list-dumb'
@@ -25,6 +26,7 @@ class ContactList extends React.Component {
 		this.showAllToggle = this.showAllToggle.bind( this )
 		this.savePerson = this.savePerson.bind( this )
 		this.toggleEditPerson = this.toggleEditPerson.bind( this )
+		this.deleteMeeting = this.deleteMeeting.bind( this )
 	}
 
 
@@ -67,6 +69,13 @@ class ContactList extends React.Component {
 		this.state.showall ? this.setState( { ...this.state, showall: false } ) : this.setState( { ...this.state, showall: true } )
 	}
 
+	// Delete meeting
+	deleteMeeting( e, meetid, personid ) { 
+		e.preventDefault(  )
+		console.log( meetid, personid )
+		this.props.dispatch( meetings.destroy( personid, meetid ) ).then( console.log.bind( console ) )
+	 }
+
 	render( ) { 
 	 	const { user, contacts } = this.props
 
@@ -74,10 +83,9 @@ class ContactList extends React.Component {
 	 	const list =    <main><div className="container"><section><div>
 			 				<List showall = { this.state.showall } user = { user } show = { this.showPerson } contacts = { contacts.array.sort( ( one, two ) => two.priority > one.priority ? 1 : -1 ) } />
 			 				<p className="mouse link center" onClick = { this.showAllToggle }>Show { this.state.showall ? 'overdue only' : 'all contacts' }</p>
-			 				<Person toggle = { this.toggleEditPerson } editing = { this.state.editingperson } save = { this.savePerson } reset = { this.resetPerson } person = { this.props.contacts.object[this.state.showingperson] } />
+			 				<Person toggle = { this.toggleEditPerson } editing = { this.state.editingperson } save = { this.savePerson } reset = { this.resetPerson } person = { this.props.contacts.object[this.state.showingperson] } deletemeet = { this.deleteMeeting } />
 			 			</div></section></div></main>
 		return user ? list : false
-	  }
 }
 
 // Connect the relevant redux data to this component. Contacts can be quite big since it includes meeting data
