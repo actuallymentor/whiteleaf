@@ -86,6 +86,7 @@ class ContactList extends React.Component {
 			 				<Person toggle = { this.toggleEditPerson } editing = { this.state.editingperson } save = { this.savePerson } reset = { this.resetPerson } person = { this.props.contacts.object[this.state.showingperson] } deletemeet = { this.deleteMeeting } />
 			 			</div></section></div></main>
 		return user ? list : false
+	}
 }
 
 // Connect the relevant redux data to this component. Contacts can be quite big since it includes meeting data
