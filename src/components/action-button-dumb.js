@@ -29,20 +29,16 @@ export const AddContact = ( { handleSubmit, adding, clearModals } ) => {
 	return <div className = 'backdrop' onClick = { clearModals } >
 				<div onClick = { e => e.stopPropagation() } className = 'modal col l6 m12 s12'>
 					<form onSubmit = { handleSubmit } className = "modalform row nomar">
-						<div className="input col l6 m6 s12">
+						<div className="input col l4 m6 s12">
 							<div className="label">Who are we adding?</div>
 							<input className="col s12 m12 l12" name="name" type="text" placeholder="Tony Stark" required/>
 						</div>
-						<div className="input col l6 m6 s12">
+						<div className="input col l4 m6 s12">
 							<div className="label">How do you know them?</div>
 							<input className="col s12 m12 l12" name="bio" type="text" placeholder="They said we are friends once, I like that." />
 						</div>
-						<div className="input col l6 m6 s12">
-							<div className="label">What's their email?</div>
-							<input className="col s12 m12 l12" name="email" type="email" placeholder="best@friend.evs" />
-						</div>
-						<div className="input col l6 m6 s12">
-							<div className="label">Contact them every how many days?</div>
+						<div className="input col l4 m6 s12">
+							<div className="label">Contact frequency in days?</div>
 							<input className="col s12 m12 l12" name="frequency" type="number" placeholder="9001" required />
 						</div>
 						<input type="submit" value="save" className="col l2 offset-l5 m4 offset-m4 s12" />

@@ -8,9 +8,9 @@ import * as db from '../helpers/firebase-db'
 import * as transform from '../helpers/data-transformations'
 
 // Add a contact
-export const create = ( app, name, bio, email, frequency ) => {
+export const create = ( app, name, bio, frequency ) => {
 	// Write data to user's contacts child
-	return db.append( app, 'contacts', { name: name, bio: bio, email: email, frequency: frequency } )
+	return db.append( app, 'contacts', { name: name, bio: bio, frequency: frequency } )
 }
 
 // Read a speficic contact from db

@@ -52,8 +52,8 @@ class ActionButton extends React.Component {
 	// Functions used for submitting data to the firebase db
 	submitContact( e ) { 
 		e.preventDefault( )
-		const { name, bio, email, frequency } = e.target
-		this.props.dispatch( contacts.addcontact( name.value, bio.value, email.value, frequency.value ) )
+		const { name, bio, frequency } = e.target
+		this.props.dispatch( contacts.addcontact( name.value, bio.value, frequency.value ) )
 		this.clearModals()
 	}
 

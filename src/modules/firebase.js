@@ -40,7 +40,7 @@ class App {
 	deleteUser( ) 				{ return user.destroy( this ) }
 
 	// CONTACT MANAGEMENT
-	addContact( name, bio, email, frequency )  { return contacts.create ( this, name, bio, email, frequency ) }
+	addContact( name, bio, frequency )  { return contacts.create ( this, name, bio, frequency ) }
 	getContacts( )					   		   { return contacts.get( this ) }
 	updateContact( id, data )				   { return contacts.update( this, id, data ) }
 	destroyContact( id )			           { return contacts.destroy( this, id ) }
