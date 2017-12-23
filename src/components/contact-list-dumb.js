@@ -55,7 +55,7 @@ export const Person = ( { editing, toggle, save, person, reset, deletemeet } ) =
 	return <div id="persontable" className="backdrop">
 				<div className = 'modal col l6 m12 s12 center'>
 					<h2>Your history with { person.name }</h2>
-					<p>Bio: { person.bio }{ person.bio[ person.bio.length -1 ] == '.' ? '' : '.' } You contact them every { person.frequency } days</p>
+					<p>Bio: { person.bio }{ person.bio[ person.bio.length -1 ] == '.' ? '' : '.' } <br />Contact every { person.frequency } days</p>
 					<form onSubmit = { save } className = { editing ? 'col s12 m12 l12' : 'hide' }>
 						<div className = "row">
 							<input type='text' name='id' defaultValue= { person.id } hidden />
